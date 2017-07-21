@@ -8,7 +8,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('views', __dirname);
+app.set('views', __dirname + '/public');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
