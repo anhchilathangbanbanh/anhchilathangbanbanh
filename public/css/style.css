@@ -1,0 +1,84 @@
+.logo {
+    padding: 0px;
+}
+
+.contact-and-time {
+    padding: 0px;
+    
+}
+
+.navbar-custom {
+    background-color: #541900;
+}
+
+.button-menu {
+    float: left;
+    margin-left: 15px;
+    background-image: url('../images/nav.svg');
+    background-repeat: no-repeat;
+    margin-right: 0px;
+}
+
+.basket {
+    float: right;
+    margin-right: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.basket-in-drop-menu {
+    height: 40px;
+    width: 44px;
+}
+
+.bounder {
+    width: 300px;
+    padding: 20px 0px;
+    margin-right: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px #888888;
+}
+
+.column-custom {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 320px;
+    padding: 20px 0px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 3px #888888;
+}
+
+.link-to-detail {
+    display: block;
+    height: 300px;
+    width: 100%;
+}
+
+.link-to-detail:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+      text-align: center;
+    }
+
+    .basket {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .column-custom {
+        box-shadow: none;
+    }
+}
