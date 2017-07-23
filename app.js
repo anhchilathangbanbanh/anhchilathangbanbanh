@@ -16,12 +16,17 @@ app.set('views', __dirname + '/view');
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
 
+<<<<<<< HEAD
 mongoose.connect('mongodb://localhost/anhchilathangbanbanh', function(err) {
     if (err) {
         console.log('MongoDB connection error: ' + err);
         // return reject(err);
         process.exit(1);
     }
+=======
+app.get('/', function(req, res) {
+    res.render('pages/index');
+>>>>>>> ce904048a150423937d3eaeda3af009e185993ac
 });
 
 app.use(cakeCategory);
