@@ -1,8 +1,12 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-var fs = require('fs');
-var multiparty = require('multiparty');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require('fs');
+const multiparty = require('multiparty');
+const mongoose = require('mongoose');
+
+const cakeCategory = require('./controller/cake/cake.js');
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -12,9 +16,19 @@ app.set('views', __dirname + '/view');
 app.use('/public', express.static(process.cwd() + '/public'));
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res) {
-    res.render('index');
+mongoose.connect('mongodb://localhost/anhchilathangbanbanh', function(err) {
+    if (err) {
+        console.log('MongoDB connection error: ' + err);
+        // return reject(err);
+        process.exit(1);
+    }
 });
+
+app.use(cakeCategory);
+
+// app.get('/', function(req, res) {
+//     res.render('index');
+// });
 
 // app.post('/upload', function(req, res) {
 //     var form = new multiparty.Form();
