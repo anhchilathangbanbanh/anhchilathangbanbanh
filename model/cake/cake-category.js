@@ -3,11 +3,6 @@ const q = require('q');
 
 var Schema = mongoose.Schema;
 cakeCategorySchema = new Schema({
-    category_id: {
-        type: String,
-        require: true,
-        unique: true
-    },
     name: {
         type: String,
         required: true,

@@ -5,7 +5,8 @@ const fs = require('fs');
 const multiparty = require('multiparty');
 const mongoose = require('mongoose');
 
-const cakeCategory = require('./controller/cake/cake.js');
+const cakeCategory = require('./controller/cake/cake-category.js');
+const cake = require('./controller/cake/cake.js');
 
 var app = express();
 
@@ -22,37 +23,17 @@ mongoose.connect('mongodb://localhost/anhchilathangbanbanh', function(err) {
         process.exit(1);
     }
 });
+var router = express.Router();
 
 app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
-app.use(cakeCategory);
+router.get('/api/cake/get-list-cake', cake.getListCake);
+router.post('/api/cake/create-new-cake', cake.checkRequiredFields, cake.checkDuplicateFields, cake.createNewCake);
 
-// app.get('/', function(req, res) {
-//     res.render('index');
-// });
-
-// app.post('/upload', function(req, res) {
-//     var form = new multiparty.Form();
-//     form.parse(req, function(err, fields, files) {
-//        var audio = files.audio[0];
-//        fs.readFile(audio.path, 'utf8', function(err, data) {
-//            if (err) {
-//               console.log('Error1: ' + err);
-//           }else {
-//              var path = './public/audio/' + audio.originalFilename;
-//              fs.writeFile(path, data, function(err) {
-//                 if (err) {
-//                     console.log('Error2: ' + err);
-//                 }else {
-//                     res.send('Success');
-//                 }
-//              });
-//           }
-//        })
-//     });
-// });
+// app.use(cakeCategory);
+app.use(router);
 
 app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'), () => {
