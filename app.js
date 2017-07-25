@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost/anhchilathangbanbanh', function(err) {
 var router = express.Router();
 
 app.get('/', function(req, res) {
-    res.render('pages/index');
+    res.render('./pages/index');
 });
 
 router.get('/api/cake/get-list-cake', cake.getListCake);
