@@ -1,5 +1,4 @@
 const fs = require('fs');
-const multiparty = require('multiparty');
 const bodyParser = require('body-parser');
 
 const cake = require('../../model/cake/cake.js');
@@ -21,26 +20,21 @@ exports.getListCake = function(req, res) {
         });
 };
 
-var uploadImg = function(req, res, next) {
-    var form = new multiparty.Form();
-    form.parse(req, function(err, fields, files) {
-        var image = files.images[0];
-        console.log(image);
-        fs.readFile(image.path, function(err, data) {
-            if (err) {
-                res.send('Error1: ' + err);
-            }else {
-                var path = './images/' + image.originalFilename;
-                fs.writeFile(path, data, function(err) {
-                    if (err) {
-                        res.send('Error2: ' + err);
-                    }else {
-                        next();
-                    }
+exports.getCakeByCategory = function(req, res) {
+    cake.getCakeByCategory(req.params.cakeCategoryId, req.query.page)
+        .then(function(result) {
+            if (result.length == 0) {
+                res.json({ status: 2, message: 'Dont have data of this category' });
+            }else if (result.length > 0) {
+                res.json({
+                    status: 1,
+                    message: 'Success',
+                    data: result
                 });
             }
+        }, function(err) {
+            res.json({ status: 0, message: err });
         });
-    });
 }
 
 exports.createNewCake = function(req, res) {

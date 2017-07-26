@@ -64,6 +64,29 @@ exports.getListCake = function() {
     return deferred.promise;
 };
 
+exports.getCakeByCategory = function(cakeCategory, page) {
+    var queryStr = {
+        status: 1,
+        _category: cakeCategory
+    };
+    var deferred = q.defer();
+    cake.find(queryStr)
+        .limit(numberOfDataDisplay)
+        .skip(page * numberOfDataDisplay)
+        .populate({
+            path: '_category',
+            select: 'name'
+        })
+        .exec(function(err, data) {
+            if (err) {
+                deferred.reject(err);
+            }else {
+                deferred.resolve(data);
+            }
+        });
+    return deferred.promise;
+}
+
 // find by 1 of 3 options: product_code, name, img_path
 exports.getOneCake = function(queryStr) {
     var deferred = q.defer();
