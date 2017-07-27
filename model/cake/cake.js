@@ -56,7 +56,7 @@ exports.getListCake = function() {
         })
         .exec(function(err, data) {
             if (err) {
-                deferred.reject(err);
+                deferred.reject(err.message);
             }else {
                 deferred.resolve(data);
             }
@@ -64,7 +64,7 @@ exports.getListCake = function() {
     return deferred.promise;
 };
 
-exports.getCakeByCategory = function(cakeCategory, page) {
+exports.getCakeByCategory = function(cakeCategory) {
     var queryStr = {
         status: 1,
         _category: cakeCategory
@@ -79,7 +79,7 @@ exports.getCakeByCategory = function(cakeCategory, page) {
         })
         .exec(function(err, data) {
             if (err) {
-                deferred.reject(err);
+                deferred.reject(err.message);
             }else {
                 deferred.resolve(data);
             }
@@ -87,7 +87,7 @@ exports.getCakeByCategory = function(cakeCategory, page) {
     return deferred.promise;
 }
 
-// find by 1 of 3 options: product_code, name, img_path
+// find by 1 of 4 options: _id, product_code, name, img_path
 exports.getOneCake = function(queryStr) {
     var deferred = q.defer();
     var queryCondition = [
@@ -102,7 +102,7 @@ exports.getOneCake = function(queryStr) {
         })
         .exec(function(err, data) {
             if (err) {
-                deferred.reject(err);
+                deferred.reject(err.message);
             }else {
                 deferred.resolve(data);
             }
@@ -110,12 +110,67 @@ exports.getOneCake = function(queryStr) {
     return deferred.promise;
 };
 
+exports.findCakeWithExceptionalCondition = function(queryStr, exception) {
+    var deferred = q.defer();
+    var queryCondition = [
+        { product_code: queryStr },
+        { name: queryStr },
+        { img_path: queryStr }
+    ];
+    var exceptionalCondition = { _id: { $ne: exception } };
+    console.log(exceptionalCondition);
+    cake.find({ $and: [
+        { $or: queryCondition },
+        exceptionalCondition
+    ]})
+        .exec(function(err, data) {
+            if (err) {
+                deferred.reject(err.message);
+            }else {
+                deferred.resolve(data);
+            }
+        });
+    return deferred.promise;
+}
+
 exports.createNewCake = function(cakeInfo) {
     var newCake = new cake(cakeInfo);
     var deferred = q.defer();
     newCake.save(function(err) {
         if (err) {
-            deferred.reject(err);
+            deferred.reject(err.message);
+        }else {
+            deferred.resolve('Success');
+        }
+    });
+    return deferred.promise;
+};
+
+exports.updateCakeInfo = function(cakeId, cakeUpdatedInfo) {
+    var queryStr = {
+        _id: cakeId,
+        status: 1
+    };
+    var deferred = q.defer();
+    cake.findOneAndUpdate(queryStr, { $set: cakeUpdatedInfo }, function(err) {
+        if (err) {
+            deferred.reject(err.message);
+        }else {
+            deferred.resolve('Success');
+        }
+    });
+    return deferred.promise;
+};
+
+exports.deleteCake = function(cakeId) {
+    var queryStr = {
+        _id: cakeId,
+        status: 1
+    };
+    var deferred = q.defer();
+    cake.findOneAndUpdate(queryStr, { $set: { status: 0 } }, function(err) {
+        if (err) {
+            deferred.reject(err.message);
         }else {
             deferred.resolve('Success');
         }
