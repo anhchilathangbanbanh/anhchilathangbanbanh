@@ -1,0 +1,38 @@
+body {
+    background-image: url('../images/background.png');
+    background-position: center;
+}
+
+.column-custom {
+    margin: auto;
+    margin-top: 60px;
+}
+
+.main-content {
+    background-image: url('../images/ornament_2-background.png');
+    background-position: center -30px;
+    height: 488px;
+}
+
+.link-to-detail {
+    display: block;
+    height: 300px;
+    width: 100%;
+}
+
+.link-to-detail:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+.slick-dots {
+    color: #8d7e6f;
+}
+
+footer{
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+
+}

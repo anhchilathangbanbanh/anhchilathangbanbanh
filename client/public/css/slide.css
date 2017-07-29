@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'CoralRegular';
+    src: url('.coral-Regular/Polka%20Dot%20Crazy.ttf');
+}
+
+.fadein {
+    position:relative;
+    height: 500px;
+}
+
+.fadein .slide {
+    position:absolute;
+    height: 398px;
+}
+
+.fadein .slide .intro {
+    margin-top: 40px;
+}
+
+.fade .slide .more-info {
+    font-family: 'CoralRegular';
+    font-size: 20px;
+    display: block;
+}
+
+.fadein .slide .category-title {
+    text-transform: uppercase;
+    color: #cc0d1c;
+    font-family: BlissRegular;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.fadein .slide .category-content {
+    font-family: BlissRegular;
+    font-weight: bold;
+    font-size: 18px;
+    color: #8d7e6f;
+}
+
+@media (min-width: 768px) {
+    .fadein {
+        height: 398px;
+    }
+}
