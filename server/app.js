@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
     CONNECT TO DB
 ===================================*/
 if (process.env.NODE_ENV == "production") {
-    mongoose.connect('mongodb://mlab.com:11123/anhchilathangbanbanh', function(err) {
+    mongoose.connect('mongodb://anhchilathangbanbanh:123456@mlab.com:11123/anhchilathangbanbanh', function(err) {
         if (err) {
             console.log('MongoDB connection error: ' + err);
             process.exit(1);
