@@ -21,12 +21,12 @@ app.set('view engine', 'ejs');
 /*===================================
     CONNECT TO DB
 ===================================*/
-mongoose.connect(config.DB_URL, function(err) {
-    if (err) {
-        console.log('MongoDB connection error: ' + err);
-        process.exit(1);
-    }
-});
+// mongoose.connect(config.DB_URL, function(err) {
+//     if (err) {
+//         console.log('MongoDB connection error: ' + err);
+//         process.exit(1);
+//     }
+// });
 
 app.get('/', function(req, res) {
     res.render('./pages/index');
