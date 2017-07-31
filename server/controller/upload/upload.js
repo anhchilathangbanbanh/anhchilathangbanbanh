@@ -1,11 +1,11 @@
 const multiparty = require('multiparty');
 const fs = require('fs');
 
-exports.uploadImg = function(req, res, next) {
+exports.uploadImg = function(req, res) {
     var form = new multiparty.Form();
     form.parse(req, function(err, fields, files) {
         if (!files.images[0].originalFilename.match(/.(jpg|jpeg|png|gif)$/i)) {
-            res.json({ status: 2, message: 'Not an image' });
+            res.json({ status: 0, message: 'Not an image' });
         }else {
             var image = files.images[0];
             fs.readFile(image.path, function(err, data) {
@@ -30,7 +30,6 @@ exports.uploadImg = function(req, res, next) {
                 }
             });
         }
-
     });
 }
 
