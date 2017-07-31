@@ -28,7 +28,7 @@ if (process.env.MONGODB_URI) {
             process.exit(1);
         }
     });
-}else if (process.env.NODE_ENV == "development") {
+}else {
     mongoose.connect(config.DB_URL, function(err) {
         if (err) {
             console.log('MongoDB connection error: ' + err);
