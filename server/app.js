@@ -5,7 +5,7 @@ const fs = require('fs');
 const multiparty = require('multiparty');
 const mongoose = require('mongoose');
 
-const config = require('../config.js');
+const config = require('../config.json')[process.env.NODE_ENV || 'development'];
 var app = express();
 
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 /*===================================
     CONNECT TO DB
 ===================================*/
-if (process.env.NODE_ENV == 'production') {
+// if (process.env.NODE_ENV == 'production') {
     mongoose.connect(process.env.MONGO_URI, function(err) {
         if (err) {
             console.log('abc');
@@ -29,15 +29,15 @@ if (process.env.NODE_ENV == 'production') {
             process.exit(1);
         }
     });
-}else {
-    mongoose.connect(config.DB_URL, function(err) {
-        if (err) {
-
-            console.log('MongoDB connection error: ' + err);
-            process.exit(1);
-        }
-    });
-}
+// }else {
+//     mongoose.connect(config.DB_URL, function(err) {
+//         if (err) {
+//
+//             console.log('MongoDB connection error: ' + err);
+//             process.exit(1);
+//         }
+//     });
+// }
 
 app.get('/', function(req, res) {
     res.render('./pages/index');
