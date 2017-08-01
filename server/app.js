@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 /*===================================
     CONNECT TO DB
 ===================================*/
-if (process.env.MONGODB_URI) {
+if (process.env.NODE_ENV !== 'develop') {
     mongoose.connect(process.env.MONGODB_URI, function(err) {
         if (err) {
             console.log('MongoDB connection error: ' + err);
