@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
     CONNECT TO DB
 ===================================*/
 if (process.env.NODE_ENV == 'production') {
-    mongoose.connect(process.env.MONGODB_URI, function(err) {
+    mongoose.connect(process.env.MONGO_URI, function(err) {
         if (err) {
             console.log('abc');
             console.log('MongoDB connection error: ' + err);
