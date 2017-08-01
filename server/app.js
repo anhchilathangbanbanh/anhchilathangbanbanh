@@ -5,7 +5,7 @@ const fs = require('fs');
 const multiparty = require('multiparty');
 const mongoose = require('mongoose');
 
-const config = require('../config.json')[process.env.NODE_ENV || 'development'];
+const config = require('../config.json');
 var app = express();
 
 app.use(bodyParser.json());
