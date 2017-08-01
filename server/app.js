@@ -21,9 +21,10 @@ app.set('view engine', 'ejs');
 /*===================================
     CONNECT TO DB
 ===================================*/
-if (process.env.NODE_ENV !== 'develop') {
+if (process.env.NODE_ENV == 'production') {
     mongoose.connect(process.env.MONGODB_URI, function(err) {
         if (err) {
+            console.log('abc');
             console.log('MongoDB connection error: ' + err);
             process.exit(1);
         }
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV !== 'develop') {
 }else {
     mongoose.connect(config.DB_URL, function(err) {
         if (err) {
+
             console.log('MongoDB connection error: ' + err);
             process.exit(1);
         }
