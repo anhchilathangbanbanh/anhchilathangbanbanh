@@ -22,21 +22,21 @@ app.set('view engine', 'ejs');
     CONNECT TO DB
 ===================================*/
 // if (process.env.NODE_ENV == 'production') {
-    mongoose.connect('mongodb://anhchilathangbanbanh:123456@ds111123.mlab.com:11123/anhchilathangbanbanh', function(err) {
+    // mongoose.connect('', function(err) {
+    //     if (err) {
+    //         console.log('abc');
+    //         console.log('MongoDB connection error: ' + err);
+    //         process.exit(1);
+    //     }
+    // });
+// }else {
+    mongoose.connect(config.DB_URL, function(err) {
         if (err) {
-            console.log('abc');
+
             console.log('MongoDB connection error: ' + err);
             process.exit(1);
         }
     });
-// }else {
-//     mongoose.connect(config.DB_URL, function(err) {
-//         if (err) {
-//
-//             console.log('MongoDB connection error: ' + err);
-//             process.exit(1);
-//         }
-//     });
 // }
 
 app.get('/', function(req, res) {
