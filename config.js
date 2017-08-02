@@ -1,5 +1,5 @@
 module.exports = {
     "PORT": 3000,
-    "DB_URL": process.env.MONGODB_URI,
+    "DB_URL": 'mongodb://localhost/anhchilathangbanbanh',
     "numberOfDataDisplay": 20
 }

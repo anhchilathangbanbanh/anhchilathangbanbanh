@@ -1,0 +1,27 @@
+.footer .first-footer-menu {
+    padding-left: 50px;
+}
+
+.footer .footer-menu p {
+    color: #cc0d1c;
+    font-size: 20px;
+}
+
+.footer .footer-menu ul {
+    list-style-type: none;
+}
+
+.footer .footer-menu ul li, a {
+    color: #8d7e6f;
+}
+
+.footer .footer-menu ul li a:hover {
+    color: #cc0d1c;
+    text-decoration: none;
+}
+
+.footer .footer-menu .about-us-content {
+    color: #8d7e6f;
+    font-size: 14px;
+    text-overflow: ellipsis;
+}

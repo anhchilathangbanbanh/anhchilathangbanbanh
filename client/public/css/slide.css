@@ -10,7 +10,7 @@
 
 .fadein .slide {
     position:absolute;
-    height: 398px;
+    height: 400px;
 }
 
 .fadein .slide .intro {
@@ -40,6 +40,16 @@
 
 @media (min-width: 768px) {
     .fadein {
-        height: 398px;
+        height: 400px;
+    }
+
+    .fadein .slide img {
+        height: 400px;
     }
 }
+
+@media (max-width:840px) and (min-width:480px) {
+    .fadein .slide img {
+        height: 75%;
+    }
+}​

@@ -6,28 +6,30 @@ $(document).ready(function() {
 
     $('.main-content .wrapper').slick({
         centerMode: true,
-        centerPadding: '30px',
         slidesToShow: 3,
         dots: true,
-        useCSS: true,
         responsive: [
-        {
-            breakpoint: 768,
-            settings: {
-                centerMode: true,
-                centerPadding: '10px',
-                slidesToShow: 2,
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    infinite: true
+                }
             }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                arrows: false,
-                variableWidth: true,
-                centerPadding: '0px',
-                slidesToShow: 1
-            }
-        }
         ]
     });
 });

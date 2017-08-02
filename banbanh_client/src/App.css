@@ -1,0 +1,50 @@
+.Header .Logo {
+    padding: 0px;
+}
+
+.Header .MenuWrapper {
+    padding: 0px;
+}
+
+.Header .NavbarCustom {
+    background-image: url('./images/ornament_1-background.png');
+    border-radius: 0px;
+    border: none;
+}
+
+.Header .MenuDetail li a {
+    color: #8d7e6f;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: BlissRegular;
+}
+
+.Header .MenuDetail li a:hover {
+    color: #cc0d1c;
+    background-color: transparent !important;
+}
+
+.Header .ButtonMenu {
+    float: left;
+    margin-left: 15px;
+    background-image: url('./images/nav.svg');
+    background-repeat: no-repeat;
+    margin-right: 0px;
+}
+
+@media (min-width: 768px) {
+    .Header .navbar .navbar-nav {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
+
+    .Header .navbar .navbar-collapse {
+      text-align: center;
+    }
+
+    .Header .NavbarCustom {
+        background-image: none;
+        margin-top: 55px;
+    }
+}
