@@ -7,7 +7,7 @@ class Header extends Component {
                 <div classNameName="container">
                     <div className="row">
                         <div className="col-sm-4 col-md-2 col-md-offset-2 Logo">
-                            <a href="#"><img src="{require('./images/new-logo.png')}" height="190"/></a>
+                            <a href="#"><img src="../images/new-logo.png" height="190"/></a>
                         </div>
                         <div className="col-sm-8 col-md-7 MenuWrapper">
                             <nav className="navbar NavbarCustom">

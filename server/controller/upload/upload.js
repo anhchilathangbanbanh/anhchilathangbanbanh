@@ -1,6 +1,8 @@
 const multiparty = require('multiparty');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 
+var exports = {};
 exports.uploadImg = function(req, res) {
     var form = new multiparty.Form();
     form.parse(req, function(err, fields, files) {
