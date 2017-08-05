@@ -43,7 +43,6 @@ app.use('/assets', express.static('assets'));
 if (process.env.NODE_ENV == 'production') {
     mongoose.connect('mongodb://anhchilathangbanbanh:123456@ds111123.mlab.com:11123/anhchilathangbanbanh', function(err) {
         if (err) {
-            console.log('abc');
             console.log('MongoDB connection error: ' + err);
             process.exit(1);
         }
