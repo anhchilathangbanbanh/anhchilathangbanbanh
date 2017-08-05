@@ -33,8 +33,8 @@ app.use(function(req, res, next) {
 /*==================================
     SET VIEW ENGINE
 ==================================*/
-app.set('views', '../client/view');
-app.use('/public', express.static('../client/public'));
+app.set('views', './client/view');
+app.use('/public', express.static('./client/public'));
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 /*===================================
