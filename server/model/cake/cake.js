@@ -15,7 +15,7 @@ var cakeSchema = new Schema({
     },
     _category: {
         type: Schema.Types.ObjectId,
-        ref: 'cakeCategory'
+        ref: 'cake_category'
     },
     description: String,
     price: {

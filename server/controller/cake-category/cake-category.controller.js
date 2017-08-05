@@ -8,7 +8,7 @@ exports.getListCakeCategory = function(req, res) {
         .then(function(result) {
             if (result.length == 0) {
                 res.send({
-                    status: 2,
+                    status: 1,
                     message: 'There was no any data'
                 });
             }else if (result.length > 0) {

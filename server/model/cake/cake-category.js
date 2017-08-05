@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const q = require('q');
 
 var Schema = mongoose.Schema;
-cakeCategorySchema = new Schema({
+cake_categorySchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -22,7 +22,7 @@ cakeCategorySchema = new Schema({
         updatedAt: 'updated_at'
     }
 });
-var cakeCategory = mongoose.model('cakeCategory', cakeCategorySchema);
+var cake_category = mongoose.model('cake_category', cake_categorySchema);
 
 var exports = {};
 exports.getListCakeCategory = function() {
@@ -30,7 +30,7 @@ exports.getListCakeCategory = function() {
         status: 1
     };
     var deferred = q.defer();
-    cakeCategory.find(queryStr, function(err, data) {
+    cake_category.find(queryStr, function(err, data) {
         if (err) {
             deferred.reject(err);
         }else {

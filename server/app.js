@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
 app.set('views', '../client/view');
 app.use('/public', express.static('../client/public'));
 app.set('view engine', 'ejs');
-
+app.use('/assets', express.static('assets'));
 /*===================================
     CONNECT TO DB
 ===================================*/
@@ -51,9 +51,10 @@ app.set('view engine', 'ejs');
 // }else {
     mongoose.connect(config.DB_URL, function(err) {
         if (err) {
-
             console.log('MongoDB connection error: ' + err);
             process.exit(1);
+        }else {
+            console.log('MongoDB connect success');
         }
     });
 // }
