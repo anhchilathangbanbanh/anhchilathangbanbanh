@@ -5,7 +5,7 @@ const http = require('http');
 // const multiparty = require('multiparty');
 const mongoose = require('mongoose');
 
-const config = require('../config.js');
+const config = require('./config.js');
 var app = express();
 
 app.use(bodyParser.json());
