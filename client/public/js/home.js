@@ -12,7 +12,6 @@ $(document).ready(function() {
         });
 
         $('.wrapper')
-            // .slick('unslick')
             .append(html)
             .slick({
                 centerMode: true,
