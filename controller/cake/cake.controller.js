@@ -1,7 +1,6 @@
 const fs = require('fs');
-const bodyParser = require('body-parser');
 
-const cake = require('../../model/cake/cake.js');
+const cake = require('../../model/cake/cake.model');
 
 var exports = {};
 exports.getListCake = function(req, res) {

@@ -65,10 +65,11 @@ app.get('/', function(req, res) {
 /*=============================
     ROUTERS
 =============================*/
-app.use('/api/cake-category', require('./controller/cake-category/index.js'));
-app.use('/api/cake', require('./controller/cake/index.js'));
-app.use('/api/upload', require('./controller/upload/index.js'));
-
+app.use('/api/cake-category', require('./controller/cake-category/index'));
+app.use('/api/cake', require('./controller/cake/index'));
+app.use('/api/upload', require('./controller/upload/index'));
+app.use('/api/bill', require('./controller/bill/index'));
+app.use('/api/bill-detail', require('./controller/bill-detail/index'));
 
 /*===================================
     SET PORT

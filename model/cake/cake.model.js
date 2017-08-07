@@ -22,7 +22,7 @@ var cakeSchema = new Schema({
         type: Number,
         required: true
     },
-    qualtity: {
+    quantity: {
         type: Number,
         required: true
     },
@@ -63,6 +63,23 @@ exports.getListCake = function() {
         });
     return deferred.promise;
 };
+
+exports.getCakeById = function(id) {
+    var deferred = q.defer();
+    var queryCondition = {
+        _id: id,
+        status: 1
+    }
+    cake.findOne()
+        .exec(function(err, data) {
+            if (data) {
+                deferred.resolve(data);
+            }else {
+                deferred.reject(err.message);
+            }
+        });
+    return deferred.promise;
+}
 
 exports.getCakeByCategory = function(cakeCategory) {
     var queryStr = {
