@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Header extends Component {
     render() {
         return (
-            <div classNameName="Header">
-                <div classNameName="container">
+            <div className="Header">
+                <div className="container">
                     <div className="row">
                         <div className="col-sm-4 col-md-2 col-md-offset-2 Logo">
                             <a href="#"><img src="../images/new-logo.png" height="190"/></a>

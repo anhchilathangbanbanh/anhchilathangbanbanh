@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
 
-const cakeCategory = require('../../model/cake/cake-category.js');
+const cakeCategory = require('../../model/cake/cake-category.model');
 
 var exports = {};
 exports.getListCakeCategory = function(req, res) {

@@ -1,6 +1,6 @@
 const express = require('express');
 
-const controller = require('./cake.controller.js');
+const controller = require('./cake.controller');
 
 var router = express.Router();
 router.route('/get-list-cake')

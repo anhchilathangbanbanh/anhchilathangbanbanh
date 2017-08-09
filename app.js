@@ -5,14 +5,14 @@ const http = require('http');
 // const multiparty = require('multiparty');
 const mongoose = require('mongoose');
 
-const config = require('./config.js');
+const config = require('./config');
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /* ====================================
-    SET headers
+    SET HEADER
 =====================================*/
 app.use(function(req, res, next) {
     // Website you wish to allow to connect
@@ -36,7 +36,12 @@ app.use(function(req, res, next) {
 app.set('views', './client/view');
 app.use('/public', express.static('./client/public'));
 app.set('view engine', 'ejs');
+
+/*==================================
+    ALLOW ACCESS TO ASSETS FOLDER TO GET IMAGES VIA URL
+==================================*/
 app.use('/assets', express.static('assets'));
+
 /*===================================
     CONNECT TO DB
 ===================================*/
@@ -74,10 +79,6 @@ app.use('/api/bill-detail', require('./controller/bill-detail/index'));
 /*===================================
     SET PORT
 ===================================*/
-var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "application/json"});
-  // response.end("Hello World\n");
-});
 
 app.set('port', (process.env.PORT || config.PORT));
 app.listen(app.get('port'), () => {

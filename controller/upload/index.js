@@ -1,6 +1,6 @@
 const express = require('express');
 
-const controller = require('./upload.js');
+const controller = require('./upload');
 
 var router = express.Router();
 router.route('/')
