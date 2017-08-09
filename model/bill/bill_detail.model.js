@@ -16,9 +16,12 @@ var billDetailSchema = mongoose.Schema({
         ref: 'cake',
         required: true
     },
-    amount_of_purchase: {
+    quantity_purchase: {
         type: Number,
         required: true
+    },
+    amount: {
+        type: Number
     },
     status: {
         type: Number,
@@ -35,11 +38,11 @@ billDetailSchema.pre('save', function(next) {
                 next(new Error('Don\'t have this cake'));
             }else {
                 // check if amount of purchase greater then current number of this cake
-                if (self.amount_of_purchase > data.quantity) {
+                if (self.quantity_purchase > data.quantity) {
                     next(new Error('Don\'t have enough cake'));
                 }else {
                     // update current number of this cake
-                    data.quantity -= self.amount_of_purchase;
+                    data.quantity -= self.quantity_purchase;
                     data.save(function(err) {
                         if (err) {
                             next(new Error(err));
@@ -47,6 +50,8 @@ billDetailSchema.pre('save', function(next) {
                             next();
                         }
                     });
+                    // then calculate price of order
+                    self.amount = self.quantity_purchase * data.price;
                 }
             }
         }, function(err) {
@@ -66,16 +71,16 @@ exports.getTopSelling = function(startDate, endDate) {
             // group by cake to countculate number of cake was sold
             $group: {
                 _id: '$_cake',
-                total: { $sum: '$amount_of_purchase'}
+                total: { $sum: '$quantity_purchase'}
             }
         },
         { $sort: { total: -1 } },
         { $limit: 5 }
     ], function(err, data) {
         if (err) {
-            deferred.reject({status: 0, message: err });
+            deferred.reject(err);
         }else {
-            deferred.resolve({status: 1, message: data});
+            deferred.resolve(data);
         }
     });
     return deferred.promise;
@@ -86,26 +91,26 @@ exports.createNewBillDetail = function(orderInfo) {
     var deferred = q.defer();
     newOrder.save(function(err, billDetail) {
         if (err) {
-            deferred.reject({ status: 0, message: err.message });
+            deferred.reject(err.message);
         }else {
             // push this bill detail to _detail_purchase field in bill collection
             bill.getBillById(billDetail._bill)
                 .then(function(bill) {
                     if (!bill) {
-                        deferred.reject({ status: 0, message: 'This bill not existed' });
+                        deferred.reject('This bill not existed');
                     }else {
                         bill._detail_purchase.push(billDetail._id);
                         // update order in this bill
-                        bill.save(function(err) {
+                        bill.save(function(err, data) {
                             if (err) {
-                                deferred.reject({ status: 0, message: err });
+                                deferred.reject(err);
                             }else {
-                                deferred.resolve({ status: 1, message: 'Order succesfully' })
+                                deferred.resolve(bill);
                             }
                         });
                     }
                 }, function(err) {
-                    deferred.reject({ status: 0, message: err });
+                    deferred.reject(err);
                 });
         }
     });

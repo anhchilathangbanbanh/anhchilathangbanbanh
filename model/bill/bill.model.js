@@ -14,6 +14,7 @@ var billSchema = new Schema({
             ref: 'bill_detail'
         }]
     },
+    total: Number,
     status: {
         type: Number,
         default: 1
@@ -34,8 +35,8 @@ exports.getListBill = function() {
     var deferred = q.defer();
     bill.find(queryStr)
         .populate({
-            path: '_detail_purchase._cake',
-            select: 'name price quantity'
+            path: '_detail_purchase',
+            select: 'amount _cake quantity_purchase'
         })
         .exec(function(err, data) {
             if (err) {
