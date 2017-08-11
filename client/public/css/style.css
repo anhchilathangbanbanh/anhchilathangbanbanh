@@ -30,3 +30,41 @@ html {
 footer{
   text-align: center;
 }
+.block_content, .move_content{
+  height: 100%;
+  background-color: #dedede;
+  /*background-image: url('../images/s-catering.jpg');*/
+  z-index: 2000;
+}
+.sidenav{
+  background-color: #f1f1f1;
+  height: 100%;
+  padding: 0;
+}
+.row.content{
+   height: auto;
+}
+.container-fluid, .image_content {
+  height: 100vh;
+}
+.container_faded_slide{
+  height: 80vh;
+}
+.image_content{
+  width: 100%;
+}
+.move_content{
+  height: 50vh;
+}
+.move_content_1{
+  background-color: #EE7F79;
+}
+.move_content_2{
+  background-color: #ED7155;
+}
+.move_content_3{
+  background-color: #C93445;
+}
+.move_content_4{
+  background-color: #8B28E2;
+}

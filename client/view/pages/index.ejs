@@ -6,27 +6,50 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+        <link rel="stylesheet" href="../public/css/jquery.fullpage.min.css" />
+        <link rel="stylesheet" href="../public/css/jquery.fullpage.css" />
         <link rel="stylesheet" href="../public/css/style.css" />
         <link rel="stylesheet" href="../public/css/header.css" />
         <link rel="stylesheet" href="../public/css/slide.css" />
         <link rel="stylesheet" href="../public/css/footer.css" />
+
     </head>
     <body>
-         <% include ../partials/header%>
-          <% include ../partials/faded-slide%>
-        <!-- main content -->
-        <div class="cotainer-fluid main-content">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="wrapper">
-
-                </div>
-            </div>
-
+      <!-- main content -->
+      <div id="fullpage">
+        <div class="section active"  id="section0">
+           <% include ../partials/header%>
+           <% include ../partials/faded-slide%>
         </div>
-
-        <!-- footer -->
-        <% include ../partials/footer %>
-
+        <div class="section"  id="section1">
+          <div class="container-fluid">
+            <div class="row content">
+              <div class="col-sm-6 sidenav">
+                  <img src="../public/images/sidenav.jpg" class="image_content" >
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-6 move_content move_content_1">
+                      <img  src="https://panike.pt/public/uploads/2016/12/156-panike-chocolate-redondo2-510x255.png" alt="" style="transform: translate(-18%, 0%) ;">
+                  </div>
+                  <div class="col-sm-6 move_content move_content_2">
+                    <img  src="https://panike.pt/public/uploads/2017/01/102-mini-muffin_limao-510x255.png" alt="" style="transform: translate(-18%, 0%) ;">
+                  </div>
+                  <div class="col-sm-6 move_content move_content_3">
+                    <img  src="https://panike.pt/public/uploads/2016/12/45-bolo-arroz-510x255.png" alt="" style="transform: translate(-18%, 0%) ;">
+                  </div>
+                  <div class="col-sm-6 move_content move_content_4">
+                    <img  src="https://panike.pt/public/uploads/2016/12/134-meia-bagete_6_cereais-510x255.png" alt="" style="transform: translate(-18%, 0%) ;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section"  id="section2">
+          <% include ../partials/footer %>
+        </div>
+      </div>
         <!-- javascript & jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
