@@ -7,21 +7,9 @@
 }
 
 .Header .NavbarCustom {
-    background-image: url('./images/ornament_1-background.png');
+    background-color: rgb(249,248,231);
     border-radius: 0px;
     border: none;
-}
-
-.Header .MenuDetail li a {
-    color: #8d7e6f;
-    font-weight: bold;
-    font-size: 18px;
-    font-family: BlissRegular;
-}
-
-.Header .MenuDetail li a:hover {
-    color: #cc0d1c;
-    background-color: transparent !important;
 }
 
 .Header .ButtonMenu {
@@ -32,19 +20,10 @@
     margin-right: 0px;
 }
 
-@media (min-width: 768px) {
-    .Header .navbar .navbar-nav {
-      display: inline-block;
-      float: none;
-      vertical-align: top;
-    }
+.navbar-right li a{
+    color: rgb(163,50,52);
+}
 
-    .Header .navbar .navbar-collapse {
-      text-align: center;
-    }
-
-    .Header .NavbarCustom {
-        background-image: none;
-        margin-top: 55px;
-    }
+.Body {
+    padding-top: 50px;
 }
