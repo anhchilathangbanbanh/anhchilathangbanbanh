@@ -5,35 +5,32 @@ class Footer extends Component {
         return (
             <div className="Footer">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-sm-4 myCols">
-                            <h5>About us</h5>
-                            <ul>
-                                <li><a >Company Information</a></li>
-                                <li><a >Reviews</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-sm-4 myCols">
-                            <h5>Open</h5>
-                            <ul>
-                                <li>Mon - Fri: 8:00am - 6:00pm</li>
-                                <li>Sat - Sun: 8:00am - 4:30pm</li>
-                            </ul>
-                        </div>
-                        <div className="col-sm-4 myCols">
-                            <h5>Contact Us</h5>
-                            <ul>
-                                <li>To make a booking, call: <a href="tel:+190010000">1900-100-00</a></li>
-                                <li>Contact information: <a href="mailto:someone@example.com">anhchilathangbanbanh@gmail.com</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="footer-social">
-                        <a className="social-icons"><i className="fa fa-facebook"></i></a>
-                        <a className="social-icons"><i className="fa fa-google-plus"></i></a>
-                        <a className="social-icons"><i className="fa fa-twitter"></i></a>
-                    </div>
-                </div>
+    		    	<div className="row">
+    		    		<div className="col-footer col-md-4 col-xs-6">
+    		    			<h3>Contact Us</h3>
+    		    			<p className="contact-us-details">
+    	        				<b>Address:</b> 123 Downtown Avenue, Manhattan, New York, United States of America<br/>
+    	        				<b>Phone:</b> +1 123 45678910<br/>
+    	        				<b>Fax:</b> +1 123 45678910<br/>
+    	        				<b>Email:</b> <a href="mailto:info@yourcompanydomain.com">info@yourcompanydomain.com</a>
+    	        			</p>
+    		    		</div>
+    		    		<div className="col-footer col-md-4 col-xs-6">
+    		    			<h3>Our Social Networks</h3>
+    						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+    		    			<div>
+    		    				<img src="img/icons/facebook.png" width="32" alt="Facebook" />
+    		    				<img src="img/icons/twitter.png" width="32" alt="Twitter" />
+    		    				<img src="img/icons/linkedin.png" width="32" alt="LinkedIn" />
+    							<img src="img/icons/rss.png" width="32" alt="RSS Feed" />
+    						</div>
+    		    		</div>
+    		    		<div className="col-footer col-md-4 col-xs-6">
+    		    			<h3>About Our Company</h3>
+    		    				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
+    		    		</div>
+    		    	</div>
+		        </div>
             </div>
         );
     }

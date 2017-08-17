@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
+// import $ from 'jquery';
 import './App.css';
 
 import Header from './components/Header';

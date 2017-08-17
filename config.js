@@ -1,6 +1,6 @@
 module.exports = {
-    "PORT": 3000,
+    "PORT": 8000,
     "DB_URL": 'mongodb://localhost/anhchilathangbanbanh',
     "numberOfDataDisplay": 20,
-    "SERVER_URL": 'localhost:3000'
+    "SERVER_URL": 'localhost:8000'
 }

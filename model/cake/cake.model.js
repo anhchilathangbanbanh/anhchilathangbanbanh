@@ -22,7 +22,7 @@ var cakeSchema = new Schema({
         type: Number,
         required: true
     },
-    quantity: {
+    qualtity: {
         type: Number,
         required: true
     },
@@ -67,10 +67,10 @@ exports.getListCake = function() {
 exports.getCakeById = function(id) {
     var deferred = q.defer();
     var queryCondition = {
-        _id: id,
+        _id: { $in: id },
         status: 1
     }
-    cake.findOne()
+    cake.find(queryCondition)
         .exec(function(err, data) {
             if (data) {
                 deferred.resolve(data);

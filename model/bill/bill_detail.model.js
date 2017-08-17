@@ -16,7 +16,7 @@ var billDetailSchema = mongoose.Schema({
         ref: 'cake',
         required: true
     },
-    quantity_purchase: {
+    qualtity_purchase: {
         type: Number,
         required: true
     },
@@ -51,7 +51,7 @@ billDetailSchema.pre('save', function(next) {
                         }
                     });
                     // then calculate price of order
-                    self.amount = self.quantity_purchase * data.price;
+                    self.amount = self.qualtity_purchase * data.price;
                 }
             }
         }, function(err) {
@@ -61,8 +61,6 @@ billDetailSchema.pre('save', function(next) {
 
 var bill_detail = mongoose.model('bill_detail', billDetailSchema);
 
-
-
 var exports = {};
 exports.getTopSelling = function(startDate, endDate) {
     var deferred = q.defer();
@@ -71,7 +69,7 @@ exports.getTopSelling = function(startDate, endDate) {
             // group by cake to countculate number of cake was sold
             $group: {
                 _id: '$_cake',
-                total: { $sum: '$quantity_purchase'}
+                total: { $sum: '$qualtity_purchase'}
             }
         },
         { $sort: { total: -1 } },
@@ -80,7 +78,16 @@ exports.getTopSelling = function(startDate, endDate) {
         if (err) {
             deferred.reject(err);
         }else {
-            deferred.resolve(data);
+            var topSellingCake = [];
+            data.forEach(function(v, i) {
+                topSellingCake.push(v._id);
+            });
+            cake.getCakeById(topSellingCake).then(function(result) {
+                console.log(data);
+                deferred.resolve(result);
+            }, function(err) {
+                deferred.reject(err);
+            });
         }
     });
     return deferred.promise;

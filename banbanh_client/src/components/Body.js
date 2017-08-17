@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import Slide from './Slide';
+import SlideDisplayTopSelling from './SlideDisplayTopSelling';
 import ListCategory from './ListCategory';
 
 class Body extends Component {
     render() {
         return (
             <div className="Body">
-                <Slide />
+                <SlideDisplayTopSelling />
                 <ListCategory />
             </div>
         );
