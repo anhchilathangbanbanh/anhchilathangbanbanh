@@ -12,7 +12,8 @@ var billSchema = new Schema({
         type: [{
             type: Schema.Types.ObjectId,
             ref: 'bill_detail'
-        }]
+        }],
+        default: []
     },
     total: Number,
     status: {

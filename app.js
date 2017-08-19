@@ -34,11 +34,8 @@ app.use(function(req, res, next) {
 ==================================*/
 app.set('views', './client/view');
 app.use('/public', express.static('./client/public'));
+app.use('/', express.static('./client/view/build'));
 app.set('view engine', 'ejs');
-
-app.get('/', function(req, res) {
-    res.render('pages/bread');
-})
 
 app.use(express.static('banbanh_client'));
 

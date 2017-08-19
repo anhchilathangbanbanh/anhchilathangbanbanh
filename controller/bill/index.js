@@ -7,5 +7,5 @@ router.route('/get-list-bill')
     .get(controller.getListBill);
 router.route('/create-new-bill')
     .post(controller.createNewBill);
-    
+
 module.exports = router;
