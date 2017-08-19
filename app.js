@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
-// const multiparty = require('multiparty');
 const mongoose = require('mongoose');
 
 const config = require('./config');
@@ -37,6 +36,12 @@ app.set('views', './client/view');
 app.use('/public', express.static('./client/public'));
 app.set('view engine', 'ejs');
 
+app.get('/', function(req, res) {
+    res.render('pages/bread');
+})
+
+app.use(express.static('banbanh_client'));
+
 /*==================================
     ALLOW ACCESS TO ASSETS FOLDER TO GET IMAGES VIA URL
 ==================================*/
@@ -62,10 +67,6 @@ if (process.env.NODE_ENV == 'production') {
         }
     });
 }
-
-app.get('/', function(req, res) {
-    res.render('./pages/index');
-});
 
 /*=============================
     ROUTERS

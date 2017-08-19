@@ -40,14 +40,11 @@
 }
 
 .Body .SlideDisplayTopSelling .SlidePage .ImageForTopSellingCake {
-    float: right;
-    padding-right: 122px;
-    padding-top: 50px;
-    vertical-align: center;
 }
 
 .Body .SlideDisplayTopSelling .SlidePage .CakeIntro {
     float: right;
+    padding-top: 100px;
 }
 
 .Body .SlideDisplayTopSelling .SlidePage .SlideContent {
@@ -61,7 +58,7 @@
 	margin: 0;
 	position: relative;
 	margin-top:20px;
-    /*display: table;*/
+    display: table;
 }
 
 .grid .CategoryIntro img {
@@ -143,6 +140,33 @@
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
+}
+
+/*order modal*/
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:-0px; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:-0px; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /*--------------------------------------------------------------------------
