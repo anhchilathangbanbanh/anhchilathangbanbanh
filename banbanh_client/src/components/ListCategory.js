@@ -15,12 +15,12 @@ class ListCategory extends Component {
 
     componentDidMount() {
         this.getListCakeCategory();
-
-        $(document).ready(function() {
-            const el = findDOMNode(this.refs.avatar);
-            var avatarWidth = $(el).width();
-            $(".CategoryCaption").width(avatarWidth);
-        }.bind(this));
+        //
+        // $(document).ready(function() {
+        //     const el = findDOMNode(this.refs.avatar);
+        //     var avatarWidth = $(el).width();
+        //     $(".CategoryCaption").width(avatarWidth);
+        // }.bind(this));
     }
 
     getListCakeCategory() {
@@ -41,10 +41,10 @@ class ListCategory extends Component {
             return (
                 <div className="Category col-md-3 col-sm-4 col-xs-12">
                     <div className="CategoryIntro">
-                        <img ref="avatar" className="col-md-12 col-sm-12 col-xs-12" src={element.avatar} alt="img04" />
+                        <img ref="avatar" src={element.avatar} alt="img04" />
                         <div className="CategoryCaption">
-                            <h3>{element.name}</h3>
-                            <a>Take a look</a>
+                            <a href="#">Take a look</a>
+                            <h3 title={element.name}>{element.name}</h3>
                         </div>
                     </div>
                 </div>
@@ -55,15 +55,13 @@ class ListCategory extends Component {
             <div className="ListCategory">
                 <div className="section section-white">
                 	    <div className="container">
-                	        <div className="row">
-                				<div className="section-title">
-                				<h1>Categories</h1>
-                			</div>
+            				<div className="section-title">
+            				<h1>Categories</h1>
 
-                			<ul className="grid cs-style-3">
+                			<div className="row grid cs-style-3">
                                 {cakeCategory}
-                			</ul>
-        	        	</div>
+                			</div>
+            			</div>
         	        </div>
         	    </div>
             </div>

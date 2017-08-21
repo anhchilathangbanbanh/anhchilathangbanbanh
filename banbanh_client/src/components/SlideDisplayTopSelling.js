@@ -14,6 +14,7 @@ class SlideDisplayTopSelling extends Component {
 
         this.getTopSelling = this.getTopSelling.bind(this);
         this.open = this.open.bind(this);
+        this.close = this.close.bind(this);
     }
 
     componentDidMount() {
@@ -36,9 +37,12 @@ class SlideDisplayTopSelling extends Component {
     open() {
         this.setState({ showModal: true });
     }
+    close() {
+        this.setState({ showModal: false });
+    }
 
     render() {
-        const slider = this.state.topCake.map(function(element) {
+        const slider = this.state.topCake.map( (element) => {
             return (
                 <Carousel.Item className="SlidePage">
                     <Grid>
@@ -50,7 +54,9 @@ class SlideDisplayTopSelling extends Component {
                                 <div>
                                     <h3>{element.name}</h3>
                                     <p>{element.description}</p>
-                                    <OrderModal {...element}/>
+                                    <Button bsStyle="danger" onClick={this.open}>Buy now</Button>
+
+                                    <OrderModal {...element} showModal={this.state.showModal} onCloseModal={this.close}/>
                                 </div>
                             </Col>
                         </Row>
@@ -64,6 +70,7 @@ class SlideDisplayTopSelling extends Component {
                 <Carousel>
                     {slider}
                 </Carousel>
+
             </div>
         );
     }

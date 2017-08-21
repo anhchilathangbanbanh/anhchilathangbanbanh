@@ -7,11 +7,13 @@ class OrderModal extends Component {
     constructor() {
         super();
         this.state = {
-            showModal: false
+            showModal: false,
+            qualtityPurchase: 1
         };
 
         this.close = this.close.bind(this);
-        this.open = this.open.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.order = this.order.bind(this);
     }
 
     componentDidMount() {
@@ -19,21 +21,50 @@ class OrderModal extends Component {
     }
 
     close() {
-        this.setState({ showModal: false });
+        this.props.onCloseModal();
         // $('.modal').hide
     }
 
-    open() {
-        this.setState({ showModal: true });
-        // $('.modal').show()
+    handleChange(event) {
+        this.setState({qualtityPurchase: event.target.value});
+    }
+
+    order() {
+        let billData = {
+            customer: 'lethemanh',
+            _detail_purchase: []
+        };
+        $.ajax({
+            url: '/api/bill/create-new-bill',
+            type: 'post',
+            data: billData
+        }).done((bill) => {
+            let billDetailData = {
+                _bill: bill._id,
+                _cake: this.props._id,
+                qualtity_purchase: this.state.qualtityPurchase
+            }
+            if (bill) {
+                $.ajax({
+                    url: '/api/bill-detail/create-new-bill-detail',
+                    type: 'post',
+                    data: billDetailData
+                }).done((billDetail) => {
+                    console.log(billDetail);
+                }).fail((err) => {
+                    console.log(err);
+                });
+            }
+        }).fail((err) => {
+            console.log(err);
+        });
     }
 
     render() {
         return (
             <div>
-                <Button bsStyle="danger" onClick={this.open}>Buy now</Button>
 
-                <Modal className="OrderModal" container={this} bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.state.showModal} onHide={this.close}>
+                <Modal className="OrderModal" bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.showModal} onHide={this.close}>
 
                     <Modal.Body>
                     <span className="close" onClick={this.close}>&times;</span>
@@ -48,13 +79,13 @@ class OrderModal extends Component {
                                     <p><strong>Price:</strong> {this.props.price}</p>
                                     <p><strong>Qualtity:</strong> {this.props.qualtity}</p>
                                     <div className="input-group input-postfix">
-                                        <input type="number" className="ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" value="1" />
+                                        <input type="number" className="ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" value={this.state.qualtityPurchase} onChange={this.handleChange} />
                                         <div className="spinner-arrows" aria-hidden="true">
                                             <span className="up-arrow glyphicon-arrow_up"></span>
                                             <span className="down-arrow glyphicon-arrow_down disabled"></span>
                                         </div>
                                     </div>
-                                    <button className="btn btn-danger">Order</button>
+                                    <button className="btn btn-danger" onClick={this.order}>Order</button>
                                 </Col>
                             </Row>
                         </Grid>

@@ -41,9 +41,10 @@ billDetailSchema.pre('save', function(next) {
                 if (self.quantity_purchase > data.quantity) {
                     next(new Error('Don\'t have enough cake'));
                 }else {
+                    console.log(data[0]);
                     // update current number of this cake
-                    data.quantity -= self.quantity_purchase;
-                    data.save(function(err) {
+                    data[0].qualtity -= self.qualtity_purchase;
+                    data[0].save(function(err) {
                         if (err) {
                             next(new Error(err));
                         }else {
@@ -51,7 +52,7 @@ billDetailSchema.pre('save', function(next) {
                         }
                     });
                     // then calculate price of order
-                    self.amount = self.qualtity_purchase * data.price;
+                    self.amount = self.qualtity_purchase * data[0].price;
                 }
             }
         }, function(err) {

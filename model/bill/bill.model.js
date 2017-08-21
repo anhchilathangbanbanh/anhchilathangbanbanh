@@ -73,11 +73,11 @@ exports.getBillById = function(id) {
 exports.createNewBill = function(orderInfo) {
     var newOrder = new bill(orderInfo);
     var deferred = q.defer();
-    newOrder.save(function(err) {
+    newOrder.save(function(err, data) {
         if (err) {
             deferred.reject(err.message);
         }else {
-            deferred.resolve('Success');
+            deferred.resolve(data);
         }
     });
     return deferred.promise;

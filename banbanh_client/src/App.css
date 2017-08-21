@@ -58,11 +58,10 @@
 	margin: 0;
 	position: relative;
 	margin-top:20px;
-    display: table;
 }
 
 .grid .CategoryIntro img {
-	max-width: 100%;
+    width: 100%;
 	display: block;
 	position: relative;
 }
@@ -82,15 +81,22 @@
 	margin: 0;
 	padding: 0;
 	color: #fff;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .grid .CategoryCaption a {
 	text-align: center;
-	padding: 5px 10px;
+	padding: 0px 10px;
+    line-height: 30px;
 	border-radius: 0;
 	display: inline-block;
+    float: right;
 	background: #ed4e6e;
 	color: #fff;
+    margin-left: 1em;
 }
 
 .cs-style-3 .CategoryIntro {
@@ -134,12 +140,6 @@
 	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
 	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
 	transition: transform 0.4s, opacity 0.1s;
-}
-
-.grid .CategoryCaption a {
-	position: absolute;
-	bottom: 20px;
-	right: 20px;
 }
 
 /*order modal*/
