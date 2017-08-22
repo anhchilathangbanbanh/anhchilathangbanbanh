@@ -1,0 +1,92 @@
+html {
+    background-position: center;
+}
+
+.main-content {
+    background-position: center -40px;
+    height: 440px;
+}
+
+.main-content .wrapper .column-custom {
+    padding-top: 30px;
+}
+
+.main-content .wrapper .column-custom .category-name {
+    color: #ffffff;
+    font-size: 20px;
+    width: 70%;
+    text-align: center;
+}
+
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    color:  #ffffff;
+    font-size: 10px;
+}
+
+footer{
+  text-align: center;
+}
+.block_content, .move_content{
+  height: 100%;
+  background-color: #dedede;
+  /*background-image: url('../images/s-catering.jpg');*/
+  z-index: 2000;
+}
+.sidenav{
+  background-color: #f1f1f1;
+  height: 100%;
+  padding: 0;
+}
+.row.content{
+   height: auto;
+}
+.container-fluid, .image_content {
+  height: 100vh;
+}
+.container_faded_slide{
+  height: 80vh;
+}
+.image_content{
+  width: 100%;
+}
+.move_content{
+  height: 50vh;
+}
+.move_content_1{
+  background-color: #EE7F79;
+}
+.move_content_2{
+  background-color: #ED7155;
+}
+.move_content_3{
+  background-color: #C93445;
+}
+.move_content_4{
+  background-color: #8B28E2;
+}
+
+
+
+input, textarea { opacity:0.8;}
+#navbar-collapse-1 { font-size: medium;}
+.section.table { margin: 0;}
+.controlArrow { opacity: 0.5;}
+.controlArrow:hover { opacity: 1;}
+
+@media (max-width: 768px) {
+    .container { margin:0 10px;}
+    h1{ font-size: 26px !important;	}
+    p, label{ font-size: 16px !important; }
+}
+
+@media  (min-width: 769px) and (max-width: 980px) {
+    h1{ font-size: 34px !important;	}
+    p, label{ font-size: 20px !important; }
+}
+
+@media (min-width: 981px) {
+    h1{ font-size: 48px !important;	}
+    p, label{ font-size: 24px !important; }
+}

@@ -1,0 +1,62 @@
+.header{
+  height: 20vh;
+}
+.logo {
+    padding: 0px;
+}
+
+.menu-wrapper {
+    padding: 0px;
+}
+.menu-detail li a {
+    color: #8d7e6f;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: BlissRegular;
+}
+
+.menu-detail li a:hover {
+    color: #cc0d1c;
+    background-color: transparent !important;
+}
+
+.button-menu {
+    float: left;
+    margin-left: 15px;
+    background-image: url('/images/nav.svg');
+    background-repeat: no-repeat;
+    margin-right: 0px;
+}
+
+.basket {
+    float: right;
+    margin-right: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.basket-in-drop-menu {
+    height: 40px;
+    width: 44px;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+      text-align: center;
+    }
+
+    .navbar-custom {
+        background-image: none;
+        margin-top: 55px;
+    }
+
+    .basket {
+        display: none;
+    }
+}

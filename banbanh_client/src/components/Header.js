@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class Header extends Component {
     render() {
         return (
-            <div className="Header">
-                <div className="navbar navbar-fixed-top NavbarCustom" role="banner">
-                    <div className="container">
-                        <div className="navbar-header">
-                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                            </button>
-                            <a className="navbar-brand" href="index.html"><img src="" alt="Basica" /></a>
+          <div className="Header">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-4 col-md-2 col-md-offset-2 Logo">
+                            <a href="#"><img src={require('../images/new-logo.png')} height="190"/></a>
                         </div>
-                        <div className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav navbar-right">
-                                <li className="active"><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
+                        <div className="col-sm-8 col-md-7 MenuWrapper">
+                            <nav className="navbar NavbarCustom">
+                                <div className="NavbarHeader">
+                                    <button className="collapsed navbar-toggle ButtonMenu" data-toggle="collapse" data-target="#menu-collapse">
+                                        <span className="sr-only">Toggle</span>
+                                        <span className="icon-bar"></span>
+                                        <span className="icon-bar"></span>
+                                        <span className="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <div className="navbar-collapse collapse" id="menu-collapse">
+                                    <ul className="nav navbar-nav MenuDetail">
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Popular</a></li>
+                                        <li><a href="#">Contact us</a></li>
+                                        <li><a href="#">New Order</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
                         </div>
                     </div>
                 </div>
