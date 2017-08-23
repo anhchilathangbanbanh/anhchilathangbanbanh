@@ -7,7 +7,7 @@ class Fooder extends Component {
             <div className="w3-col m6">
               <a href="#" className="w3-button w3-light-grey"><i className="fa fa-arrow-up w3-margin-right"></i>To the top</a>
               <div className="w3-xlarge w3-section">
-                <p>FOLLOWING US ON</p>
+                <p>FOLLOW US ON</p>
                 <i className="fa fa-arrow-down w3-hover-opacity"></i>
               </div>
               <div className="w3-xlarge w3-section">
