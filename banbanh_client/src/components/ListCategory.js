@@ -15,12 +15,6 @@ class ListCategory extends Component {
 
     componentDidMount() {
         this.getListCakeCategory();
-        //
-        // $(document).ready(function() {
-        //     const el = findDOMNode(this.refs.avatar);
-        //     var avatarWidth = $(el).width();
-        //     $(".CategoryCaption").width(avatarWidth);
-        // }.bind(this));
     }
 
     getListCakeCategory() {
@@ -39,7 +33,7 @@ class ListCategory extends Component {
     render() {
         const cakeCategory = this.state.categories.map(function(element) {
             return (
-                <div className="Category col-md-3 col-sm-4 col-xs-12">
+                <div className="Category col-md-3 col-sm-6 col-xs-12">
                     <div className="CategoryIntro">
                         <img ref="avatar" src={element.avatar} alt="img04" />
                         <div className="CategoryCaption">

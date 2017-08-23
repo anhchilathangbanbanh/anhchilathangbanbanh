@@ -14,6 +14,7 @@ class OrderModal extends Component {
         this.close = this.close.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.order = this.order.bind(this);
+        this.chooseCake = this.chooseCake.bind(this);
     }
 
     componentDidMount() {
@@ -22,11 +23,22 @@ class OrderModal extends Component {
 
     close() {
         this.props.onCloseModal();
-        // $('.modal').hide
     }
 
     handleChange(event) {
         this.setState({qualtityPurchase: event.target.value});
+    }
+
+    chooseCake() {
+        let cake = {
+            choosenCake: {
+                name: this.props.name,
+                price: this.props.price
+            },
+            qualtityPurchase: this.state.qualtityPurchase
+        }
+        this.props.chooseCake(cake);
+        this.props.onCloseModal();
     }
 
     order() {
@@ -85,7 +97,7 @@ class OrderModal extends Component {
                                             <span className="down-arrow glyphicon-arrow_down disabled"></span>
                                         </div>
                                     </div>
-                                    <button className="btn btn-danger" onClick={this.order}>Order</button>
+                                    <button className="btn btn-danger" onClick={this.chooseCake}>Order</button>
                                 </Col>
                             </Row>
                         </Grid>

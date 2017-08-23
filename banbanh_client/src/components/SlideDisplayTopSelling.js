@@ -3,22 +3,26 @@ import { Carousel, Button, Grid, Row, Col } from 'react-bootstrap';
 import $ from 'jquery';
 
 import OrderModal from './OrderModal';
+import Bill from './Bill';
 
 class SlideDisplayTopSelling extends Component {
     constructor() {
         super();
         this.state = {
             topCake: [],
-            showModal: false
+            showModal: false,
+            chooseCake: {}
         };
 
         this.getTopSelling = this.getTopSelling.bind(this);
         this.open = this.open.bind(this);
         this.close = this.close.bind(this);
+        this.chooseCake = this.chooseCake.bind(this);
     }
 
     componentDidMount() {
         this.getTopSelling();
+
     }
 
     getTopSelling() {
@@ -34,11 +38,18 @@ class SlideDisplayTopSelling extends Component {
         });
     }
 
+    // open & close modal
     open() {
         this.setState({ showModal: true });
     }
+
     close() {
         this.setState({ showModal: false });
+    }
+
+    chooseCake(cake) {
+        this.setState({ choosenCake: cake });
+        console.log(this.state.chooseCake);
     }
 
     render() {
@@ -55,8 +66,7 @@ class SlideDisplayTopSelling extends Component {
                                     <h3>{element.name}</h3>
                                     <p>{element.description}</p>
                                     <Button bsStyle="danger" onClick={this.open}>Buy now</Button>
-
-                                    <OrderModal {...element} showModal={this.state.showModal} onCloseModal={this.close}/>
+                                    <OrderModal {...element} showModal={this.state.showModal} onCloseModal={this.close} chooseCake={this.chooseCake}/>
                                 </div>
                             </Col>
                         </Row>
@@ -70,7 +80,7 @@ class SlideDisplayTopSelling extends Component {
                 <Carousel>
                     {slider}
                 </Carousel>
-
+                <Bill choosenCake={this.state.choosenCake} />
             </div>
         );
     }
