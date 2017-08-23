@@ -9,8 +9,6 @@ class Body extends Component {
             <div className="Body">
                 <SlideDisplayTopSelling />
                 <ListCategory />
-                <br/>
-                <br/>
             </div>
         );
     }

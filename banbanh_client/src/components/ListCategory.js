@@ -46,17 +46,26 @@ class ListCategory extends Component {
         });
 
         return (
-            <div className="ListCategory">
-                <div className="section section-white">
-                	    <div className="container">
-            				<div className="section-title">
-            				<h1>Categories</h1>
-
-                			<div className="row grid cs-style-3">
-                                {cakeCategory}
-                			</div>
-            			</div>
-        	        </div>
+            <div className="ListCategory w3-padding-100">
+              <div className="section section-white">
+                <div>
+                  <div className="bgimg-2 w3-display-container w3-opacity-min">
+                    <div className="w3-display-middle">
+                       <b><span className="w3-xxxlarge w3-text-black w3-wide">CATEGORIES</span></b>
+                    </div>
+                  </div>
+                  <div className="container">
+                    <div className="w3-content w3-container w3-padding-50" id="about">
+                      <h3 className="w3-center">ABOUT MY SHOP</h3>
+                      <p className="w3-center"><em>I love cakes</em></p>
+                    </div>
+              			<div className="section-title">
+                  		<div className="row grid cs-style-3">
+                        {cakeCategory}
+                  		</div>
+              			</div>
+          	      </div>
+                </div>
         	    </div>
             </div>
         );
