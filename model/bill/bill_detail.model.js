@@ -107,8 +107,14 @@ exports.createNewBillDetail = function(orderInfo) {
                     if (!bill) {
                         deferred.reject('This bill not existed');
                     }else {
-                        bill._detail_purchase.push(billDetail._id);
                         // update order in this bill
+                        bill._detail_purchase.push(billDetail._id);
+
+                        // calculate total
+                        bill._detail_purchase.forEach(function(v, i) {
+                            console.log(v.amount);
+                        });
+
                         bill.save(function(err, data) {
                             if (err) {
                                 deferred.reject(err);

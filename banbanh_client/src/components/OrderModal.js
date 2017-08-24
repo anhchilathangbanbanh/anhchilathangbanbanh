@@ -13,12 +13,7 @@ class OrderModal extends Component {
 
         this.close = this.close.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.order = this.order.bind(this);
         this.chooseCake = this.chooseCake.bind(this);
-    }
-
-    componentDidMount() {
-
     }
 
     close() {
@@ -31,45 +26,13 @@ class OrderModal extends Component {
 
     chooseCake() {
         let cake = {
-            choosenCake: {
-                name: this.props.name,
-                price: this.props.price
-            },
+            id: this.props.choosenCake._id,
+            name: this.props.choosenCake.name,
+            price: this.props.choosenCake.price,
             qualtityPurchase: this.state.qualtityPurchase
         }
-        this.props.chooseCake(cake);
+        this.props.pickUpCake(cake);
         this.props.onCloseModal();
-    }
-
-    order() {
-        let billData = {
-            customer: 'lethemanh',
-            _detail_purchase: []
-        };
-        $.ajax({
-            url: '/api/bill/create-new-bill',
-            type: 'post',
-            data: billData
-        }).done((bill) => {
-            let billDetailData = {
-                _bill: bill._id,
-                _cake: this.props._id,
-                qualtity_purchase: this.state.qualtityPurchase
-            }
-            if (bill) {
-                $.ajax({
-                    url: '/api/bill-detail/create-new-bill-detail',
-                    type: 'post',
-                    data: billDetailData
-                }).done((billDetail) => {
-                    console.log(billDetail);
-                }).fail((err) => {
-                    console.log(err);
-                });
-            }
-        }).fail((err) => {
-            console.log(err);
-        });
     }
 
     render() {
@@ -83,13 +46,13 @@ class OrderModal extends Component {
                         <Grid>
                             <Row className="show-grid">
                                 <Col sm={6}>
-                                    <a><img src={this.props.img_path} /></a>
+                                    <a><img src={this.props.choosenCake.img_path} /></a>
                                 </Col>
                                 <Col sm={6}>
-                                    <p><strong>Name:</strong> {this.props.name}</p>
-                                    <p><strong>Product code:</strong> {this.props.product_code}</p>
-                                    <p><strong>Price:</strong> {this.props.price}</p>
-                                    <p><strong>Qualtity:</strong> {this.props.qualtity}</p>
+                                    <p><strong>Name:</strong> {this.props.choosenCake.name}</p>
+                                    <p><strong>Product code:</strong> {this.props.choosenCake.product_code}</p>
+                                    <p><strong>Price:</strong> {this.props.choosenCake.price}</p>
+                                    <p><strong>Qualtity:</strong> {this.props.choosenCake.qualtity}</p>
                                     <div className="input-group input-postfix">
                                         <input type="number" className="ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" value={this.state.qualtityPurchase} onChange={this.handleChange} />
                                         <div className="spinner-arrows" aria-hidden="true">
@@ -97,7 +60,7 @@ class OrderModal extends Component {
                                             <span className="down-arrow glyphicon-arrow_down disabled"></span>
                                         </div>
                                     </div>
-                                    <button className="btn btn-danger" onClick={this.chooseCake}>Order</button>
+                                    <button className="btn btn-danger" onClick={this.chooseCake}>Choose</button>
                                 </Col>
                             </Row>
                         </Grid>
