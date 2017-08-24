@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class Contact extends Component {
     render() {
         return (
-          <div>
+          <div className="contact">
+
             <div className="bgimg-3 w3-display-container w3-opacity-min">
             <div className="w3-display-middle">
                <b><span className="w3-xxxlarge w3-text-black w3-wide">CONTACT</span></b>

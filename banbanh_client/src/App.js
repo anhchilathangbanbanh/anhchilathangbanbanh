@@ -11,6 +11,9 @@ import Header from './components/Header';
 import Body from './components/Body';
 import Contact from './components/Contact';
 import Fooder from './components/Fooder';
+import ListCake from './components/ListCake';
+import AddCake from './components/AddCake';
+import Manage from './components/Manage';
 
 class App extends Component {
     render() {
