@@ -20,7 +20,6 @@ class Header extends Component {
                                         <span className="icon-bar"></span>
                                     </button>
                                 </div>
-
                                 <div className="navbar-collapse collapse" id="menu-collapse">
                                     <ul className="nav navbar-nav MenuDetail">
                                         <li><a href="#">Home</a></li>
