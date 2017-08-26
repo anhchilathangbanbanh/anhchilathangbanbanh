@@ -88,8 +88,8 @@ exports.getCakeByCategory = function(cakeCategory) {
     };
     var deferred = q.defer();
     cake.find(queryStr)
-        .limit(numberOfDataDisplay)
-        .skip(page * numberOfDataDisplay)
+        // .limit(numberOfDataDisplay)
+        // .skip(page * numberOfDataDisplay)
         .populate({
             path: '_category',
             select: 'name'
@@ -98,6 +98,7 @@ exports.getCakeByCategory = function(cakeCategory) {
             if (err) {
                 deferred.reject(err.message);
             }else {
+                console.log(data);
                 deferred.resolve(data);
             }
         });

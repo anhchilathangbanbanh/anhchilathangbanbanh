@@ -36,22 +36,26 @@ class Bill extends Component {
             type: 'post',
             data: billData
         }).done((bill) => {
-            let billDetailData = {
-                _bill: bill._id,
-                _cake: this.props.choosenCake.id,
-                qualtity_purchase: this.props.choosenCake.qualtityPurchase
-            }
             if (bill) {
-                $.ajax({
-                    url: '/api/bill-detail/create-new-bill-detail',
-                    type: 'post',
-                    data: billDetailData
-                }).done((billDetail) => {
-                    // alert()
-                    console.log(billDetail);
-                }).fail((err) => {
-                    console.log(err);
+                // insert bills detail
+                this.state.cakes.forEach(function(cake) {
+                    let billDetailData = {
+                        _bill: bill._id,
+                        _cake: cake.id,
+                        qualtity_purchase: cake.qualtityPurchase
+                    }
+                    $.ajax({
+                        url: '/api/bill-detail/create-new-bill-detail',
+                        type: 'post',
+                        data: billDetailData
+                    }).done((billDetail) => {
+                        alert('Success')
+                        console.log(billDetail);
+                    }).fail((err) => {
+                        console.log(err);
+                    });
                 });
+                this.setState({ cakes: this.state.cakes.splice(0, this.state.cakes.length-1) });
             }
         }).fail((err) => {
             console.log(err);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
@@ -8,22 +8,40 @@ import './header.css';
 import './style.css';
 
 import Header from './components/Header';
-import Body from './components/Body';
-import Contact from './components/Contact';
 import Fooder from './components/Fooder';
-import ListCake from './components/ListCake';
 import AddCake from './components/AddCake';
 import Manage from './components/Manage';
+import Home from './views/Home';
+import ListCake from './views/ListCake';
 
 class App extends Component {
     render() {
+        // router
+        const routes = [
+            {
+                path     : '/',
+                exact    : true,
+                component: Home
+            },
+            {
+                path: '/:category',
+                exact: true,
+                component: ListCake
+            }
+        ]
+
         return (
-            <div className="App">
-                <Header />
-                <Body />
-                <Contact />
-                <Fooder />
-            </div>
+            <Router>
+                <div className="App">
+                    <Header />
+                    <Switch>
+                        {routes.map((route, index) => (
+                            <Route key={index} {...route} />
+                        ))}
+                    </Switch>
+                    <Fooder />
+                </div>
+            </Router>
         );
     }
 }

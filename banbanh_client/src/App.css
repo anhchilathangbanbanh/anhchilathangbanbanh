@@ -316,13 +316,13 @@
 }
 
 .img-responsive3 {
-    background-image: url('./images/s-childrens.jpg');
+    /*background-image: url('./images/s-childrens.jpg');*/
     min-height: 400px;
     text-align: center;
 }
 
 .img-responsive4 {
-    background-image: url('./images/ava.jpg');
+    /*background-image: url('./images/ava.jpg');*/
     height: 200px;
     width: 100%;
     text-align: center;

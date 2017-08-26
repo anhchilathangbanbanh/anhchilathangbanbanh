@@ -10,12 +10,18 @@ var billSchema = new Schema({
     },
     _detail_purchase: {
         type: [{
-            type: Schema.Types.ObjectId,
-            ref: 'bill_detail'
+            ordered_cake: {
+                type: Schema.Types.ObjectId,
+                ref: 'bill_detail'
+            },
+            total_of_each_cake: Number
         }],
         default: []
     },
-    total: Number,
+    total: {
+        type: Number,
+        default: 0
+    },
     status: {
         type: Number,
         default: 1
