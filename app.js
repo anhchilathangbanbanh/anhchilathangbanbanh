@@ -32,11 +32,8 @@ app.use(function(req, res, next) {
 /*==================================
     SET VIEW ENGINE
 ==================================*/
-app.set('views', './client/view');
-app.use('/public', express.static('./client/public'));
+app.use(express.static('./client/public'));
 app.use('/', express.static('./client/view/build'));
-app.set('view engine', 'ejs');
-
 app.use(express.static('banbanh_client'));
 
 /*==================================

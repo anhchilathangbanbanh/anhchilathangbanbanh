@@ -4,10 +4,16 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import './App.css';
+import './header.css';
+import './style.css';
 
 import Header from './components/Header';
 import Body from './components/Body';
-import Footer from './components/Footer';
+import Contact from './components/Contact';
+import Fooder from './components/Fooder';
+import ListCake from './components/ListCake';
+import AddCake from './components/AddCake';
+import Manage from './components/Manage';
 
 class App extends Component {
     render() {
@@ -15,7 +21,8 @@ class App extends Component {
             <div className="App">
                 <Header />
                 <Body />
-                <Footer />
+                <Contact />
+                <Fooder />
             </div>
         );
     }
