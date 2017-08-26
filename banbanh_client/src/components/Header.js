@@ -4,27 +4,35 @@ class Header extends Component {
     render() {
         return (
             <div className="Header">
-                <div className="navbar navbar-fixed-top NavbarCustom" role="banner">
-                    <div className="container">
-                        <div className="navbar-header">
-                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                            </button>
-                            <a className="navbar-brand" href="index.html"><img src="" alt="Basica" /></a>
-                        </div>
-                        <div className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav navbar-right">
-                                <li className="active"><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+              <div class="row">
+                  <div class="col-sm-4 col-md-2 col-md-offset-2 logo">
+                      <a href="#"><img src="../public/images/new-logo.png" height="190"/></a>
+                  </div>
+                  <div class="col-sm-8 col-md-7 menu-wrapper">
+                      <nav class="navbar navbar-custom">
+                          <div class="navbar-header">
+                              <button class="collapsed navbar-toggle button-menu" data-toggle="collapse" data-target="#menu-collapse">
+                                  <span class="sr-only">Toggle</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                              </button>
+                              <span class="basket">
+                                  <a href="#"><img src="../public/images/basket.png"/></a>
+                              </span>
+                          </div>
+
+                          <div class="navbar-collapse collapse" id="menu-collapse">
+                              <ul class="nav navbar-nav menu-detail">
+                                  <li><a href="#">Home</a></li>
+                                  <li><a href="#">Contact us</a></li>
+                                  <li><a href="#">New Order</a></li>
+                                  <li><a href="#">Shopping Cart <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                              </ul>
+                          </div>
+                      </nav>
+                  </div>
+              </div>
             </div>
         );
     }
