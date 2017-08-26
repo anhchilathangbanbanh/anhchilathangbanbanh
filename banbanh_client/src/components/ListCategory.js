@@ -37,9 +37,9 @@ class ListCategory extends Component {
     }
 
     render() {
-        const cakeCategory = this.state.categories.map((element) => {
+        const cakeCategory = this.state.categories.map((element, index) => {
             return (
-                <div className="Category col-md-3 col-sm-6 col-xs-12">
+                <div key={index} className="Category col-md-3 col-sm-6 col-xs-12">
                     <div className="CategoryIntro">
                         <img ref="avatar" src={element.avatar} alt="img04" />
                         <div className="CategoryCaption">

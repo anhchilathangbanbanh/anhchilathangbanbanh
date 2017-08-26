@@ -38,9 +38,9 @@ class ListCake extends Component {
     }
 
     render() {
-        const listCake = this.state.listCake.map((element) => {
+        const listCake = this.state.listCake.map((element,index) => {
             return (
-                <div className="col-sm-4">
+                <div key={index} className="col-sm-4">
                     <img src={element.img_path} className="img-responsive1" />
                     <p>{element.name}</p>
                 </div>

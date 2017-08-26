@@ -55,7 +55,7 @@ class Bill extends Component {
                         console.log(err);
                     });
                 });
-                this.setState({ cakes: this.state.cakes.splice(0, this.state.cakes.length-1) });
+                this.setState({ cakes: this.state. cakes.splice(0, this.state.cakes.length-1) });
             }
         }).fail((err) => {
             console.log(err);
@@ -63,11 +63,11 @@ class Bill extends Component {
     }
 
     render() {
-        const cakes = this.state.cakes.map( (element) => {
+        const cakes = this.state.cakes.map((element, index) => {
             if (element) {
                 let price = element.price * element.qualtityPurchase;
                 return(
-                    <tr>
+                    <tr key={index}>
                         <td>{element.name}</td>
                         <td>{element.qualtityPurchase}</td>
                         <td>${price}</td>

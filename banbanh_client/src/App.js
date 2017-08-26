@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
 import './App.css';
 import './header.css';
 import './style.css';
 
 import Header from './components/Header';
 import Fooder from './components/Fooder';
-import AddCake from './components/AddCake';
-import Manage from './components/Manage';
 import Home from './views/Home';
 import ListCake from './views/ListCake';
 

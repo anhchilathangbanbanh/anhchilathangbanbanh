@@ -22,7 +22,7 @@ class SlideDisplayTopSelling extends Component {
 
         // bind this pointer
         this.getTopSelling = this.getTopSelling.bind(this);
-        this.openModal = this.openModal.bind(this);
+        // this.openModal = this.openModal.bind(this);
         this.close = this.close.bind(this);
         this.pickUpCake = this.pickUpCake.bind(this);
     }
@@ -45,7 +45,7 @@ class SlideDisplayTopSelling extends Component {
     }
 
     // open modal & pass choosen cake to OrderModal component
-    openModal(cake) {
+    openModal = (cake) => {
         this.setState({
             showModal: true,
             choosenCake: cake
@@ -63,9 +63,9 @@ class SlideDisplayTopSelling extends Component {
     }
 
     render() {
-        const slider = this.state.topCake.map( (element) => {
+        const slider = this.state.topCake.map((element, index) => {
             return (
-                <Carousel.Item className="SlidePage">
+                <Carousel.Item key={index} className="SlidePage">
                     <Grid>
                         <Row className="show-grid">
                             <Col sm={6} smOffset={2}>
@@ -75,7 +75,7 @@ class SlideDisplayTopSelling extends Component {
                                 <div>
                                     <h3>{element.name}</h3>
                                     <p>{element.description}</p>
-                                    <Button bsStyle="danger" onClick={() => this.openModal(element)}>Buy now</Button>
+                                    <Button bsStyle="danger" onClick={()=> this.openModal(element)}>Buy now</Button>
                                 </div>
                             </Col>
                         </Row>
