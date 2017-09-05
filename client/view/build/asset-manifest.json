@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.e721dca1.css",
-  "main.css.map": "static/css/main.e721dca1.css.map",
-  "main.js": "static/js/main.cb8dbfee.js",
-  "main.js.map": "static/js/main.cb8dbfee.js.map",
+  "main.css": "static/css/main.99f2c760.css",
+  "main.css.map": "static/css/main.99f2c760.css.map",
+  "main.js": "static/js/main.027fc114.js",
+  "main.js.map": "static/js/main.027fc114.js.map",
   "static/media/1.jpg": "static/media/1.03c9a6c2.jpg",
   "static/media/3.jpg": "static/media/3.1126b20d.jpg",
   "static/media/5.jpg": "static/media/5.11a4752a.jpg",
@@ -14,5 +14,9 @@
   "static/media/nav.svg": "static/media/nav.2c33eb58.svg",
   "static/media/new-logo.png": "static/media/new-logo.5861d464.png",
   "static/media/s-celebration.jpg": "static/media/s-celebration.27cdcd20.jpg",
-  "static/media/s-desserts.jpg": "static/media/s-desserts.a228f95a.jpg"
+  "static/media/s-desserts.jpg": "static/media/s-desserts.a228f95a.jpg",
+  "static/media/slick.eot": "static/media/slick.ced611da.eot",
+  "static/media/slick.svg": "static/media/slick.f97e3bbf.svg",
+  "static/media/slick.ttf": "static/media/slick.d41f55a7.ttf",
+  "static/media/slick.woff": "static/media/slick.b7c9e1e4.woff"
 }

@@ -25,7 +25,7 @@ exports.uploadImg = function(req, res) {
                             res.send({
                                 status: 1,
                                 message: 'Success',
-                                data: path
+                                data: `http://localhost:8000/${path}`
                             });
                         }
                     });

@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
+import OrderModal from '../components/OrderModal';
+import Bill from '../components/Bill';
+
 class ListCake extends Component {
     constructor() {
         super();
         this.state = {
             listCake: [],
-            message: ''
+            message: '',
+            showModal: false,
+            choosenCake: {},
+            cakeIsPicked: {}
         };
-
-        // id of category
-        // this.categoryId = this.props.match.params.category;
 
         // bind this
         this.getListCake = this.getListCake.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.close = this.close.bind(this);
+        this.pickUpCake = this.pickUpCake.bind(this);
     }
 
     componentWillMount() {
@@ -37,11 +43,30 @@ class ListCake extends Component {
         })
     }
 
+    // open modal & pass choosen cake to OrderModal component
+    openModal = (cake) => {
+        this.setState({
+            showModal: true,
+            choosenCake: cake
+        });
+    }
+
+    // close modal
+    close() {
+        this.setState({ showModal: false });
+    }
+
+    // after click choose cake on modal box pass info of choosen cake to Bill component
+    pickUpCake(cake) {
+        this.setState({ cakeIsPicked: cake });
+    }
+
+
     render() {
-        const listCake = this.state.listCake.map((element,index) => {
+        const listCake = this.state.listCake.map((element, index) => {
             return (
-                <div key={index} className="col-sm-4">
-                    <img src={element.img_path} className="img-responsive1" />
+                <div key={index} className="col-md-4">
+                    <img src={element.img_path} className="img-responsive" onClick={()=> this.openModal(element)} />
                     <p>{element.name}</p>
                 </div>
             );
@@ -54,11 +79,15 @@ class ListCake extends Component {
                     <b><span className="w3-xxxlarge w3-text-black w3-wide"></span></b>
                 </div>
             </div>
-            <div className="container text-center">
-                <div className="row">
+            <div className="row">
+                <div className="col-md-9">
                     {listCake}
                 </div>
-            </div><br/>
+                <div className="col-md-3">
+                    <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
+                    <Bill cakeIsPicked={this.state.cakeIsPicked} />
+                </div>
+            </div>
           </div>
         );
     }

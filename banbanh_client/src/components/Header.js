@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import $ from 'jquery';
+
+import Home from '../views/Home';
 
 class Header extends Component {
     render() {
+        const routes = [
+            {
+                path     : '/',
+                exact    : true,
+                component: Home
+            }
+        ];
+
         return (
           <div className="Header">
                 <div className="container">
@@ -22,10 +33,9 @@ class Header extends Component {
                                 </div>
                                 <div className="navbar-collapse collapse" id="menu-collapse">
                                     <ul className="nav navbar-nav MenuDetail">
-                                        <li><a href="#">Home</a></li>
+                                        <li><Link className="navbar-brand" to="/">Home</Link></li>
                                         <li><a href="#">Popular</a></li>
                                         <li><a href="#">Contact us</a></li>
-                                        <li><a href="#">New Order</a></li>
                                     </ul>
                                 </div>
                             </nav>

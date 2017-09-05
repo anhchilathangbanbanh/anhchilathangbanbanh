@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Carousel, Button, Grid, Row, Col } from 'react-bootstrap';
 import $ from 'jquery';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
 
 import OrderModal from './OrderModal';
 import Bill from './Bill';
@@ -22,7 +25,6 @@ class SlideDisplayTopSelling extends Component {
 
         // bind this pointer
         this.getTopSelling = this.getTopSelling.bind(this);
-        // this.openModal = this.openModal.bind(this);
         this.close = this.close.bind(this);
         this.pickUpCake = this.pickUpCake.bind(this);
     }
@@ -31,6 +33,7 @@ class SlideDisplayTopSelling extends Component {
         this.getTopSelling();
     }
 
+    // call APIs
     getTopSelling() {
         $.ajax({
             url: '/api/bill-detail/get-top-selling',
@@ -65,32 +68,33 @@ class SlideDisplayTopSelling extends Component {
     render() {
         const slider = this.state.topCake.map((element, index) => {
             return (
-                <Carousel.Item key={index} className="SlidePage">
-                    <Grid>
-                        <Row className="show-grid">
-                            <Col sm={6} smOffset={2}>
-                                <img className="ImageForTopSellingCake" alt="900x500" src={element.img_path}/>
-                            </Col>
-                            <Col sm={4}>
-                                <div>
-                                    <h3>{element.name}</h3>
-                                    <p>{element.description}</p>
-                                    <Button bsStyle="danger" onClick={()=> this.openModal(element)}>Buy now</Button>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Grid>
-                </Carousel.Item>
+                <div key={index} className="TopSellingCake">
+                    <img className="CakeAvatar" src={element.img_path} onClick={()=> this.openModal(element)} />
+                    <div className="CakeInfo">
+                        <div className="CakeName">{element.name}</div>
+                        <div className="CakeDescription">{element.description}</div>
+                    </div>
+                </div>
             );
         });
 
+        const slideSetting = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
+
         return (
-            <div className="SlideDisplayTopSelling">
-                <Carousel>
+            <div className="row SlideDisplayTopSelling">
+                <Slider {...slideSetting} className="col-md-8 TopSellingSlide">
                     {slider}
-                </Carousel>
+                </Slider>
                 <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
-                <Bill cakeIsPicked={this.state.cakeIsPicked} />
+                <div className="col-md-3">
+                    <Bill cakeIsPicked={this.state.cakeIsPicked} />
+                </div>
             </div>
         );
     }

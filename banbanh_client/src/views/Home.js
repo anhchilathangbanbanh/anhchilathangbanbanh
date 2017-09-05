@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-import Body from '../components/Body';
+import SlideDisplayTopSelling from '../components/SlideDisplayTopSelling';
+import ListCategory from '../components/ListCategory';
 import Contact from '../components/Contact';
 
 class Home extends Component {
     render() {
         return (
             <div className="Home">
-                <Body />
+                <SlideDisplayTopSelling />
+                <ListCategory />
                 <Contact />
             </div>
         );

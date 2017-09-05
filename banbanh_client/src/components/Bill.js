@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Grid, Row, Modal } from 'react-bootstrap';
+import update from 'react-addons-update';
 import $ from 'jquery';
 
 class Bill extends Component {
@@ -12,6 +13,7 @@ class Bill extends Component {
 
         this.getCustomerName = this.getCustomerName.bind(this);
         this.order = this.order.bind(this);
+        this.removeChoosenCake = this.removeChoosenCake.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -24,6 +26,10 @@ class Bill extends Component {
 
     getCustomerName(event) {
         this.setState({customerName: event.target.value});
+    }
+
+    handleChangeQualtity(event) {
+        this.set
     }
 
     order() {
@@ -55,10 +61,16 @@ class Bill extends Component {
                         console.log(err);
                     });
                 });
-                this.setState({ cakes: this.state. cakes.splice(0, this.state.cakes.length-1) });
+                this.setState({ cakes: this.state.cakes.splice(0, this.state.cakes.length-1) });
             }
         }).fail((err) => {
             console.log(err);
+        });
+    }
+
+    removeChoosenCake(index) {
+        this.setState({
+            cakes: update(this.state.cakes, {$splice: [[index, 1]]})
         });
     }
 
@@ -67,29 +79,27 @@ class Bill extends Component {
             if (element) {
                 let price = element.price * element.qualtityPurchase;
                 return(
-                    <tr key={index}>
-                        <td>{element.name}</td>
-                        <td>{element.qualtityPurchase}</td>
-                        <td>${price}</td>
-                    </tr>
+                    <button key={index} className="list-group-item BillDetailItem">
+                        <div className="BtnCancel" onClick={() => this.removeChoosenCake(index)}><span>&times;</span></div>
+                        <p className="CakeName">{element.name}</p>
+                        <div className="Qualtity">{element.qualtityPurchase}</div>
+                        <p className="Price">${price}</p>
+                    </button>
                 );
             }
         });
 
         return(
             <div className="Bill">
-                <input className="form-control" type="text" onChange={this.getCustomerName} />
-                <table className="table table-bordered">
-                    <thead>
-                        <th>Cake</th>
-                        <th>Qualtity</th>
-                        <th>Cost</th>
-                    </thead>
-                    <tbody>
+                <div className="BillWrapper">
+                    <div className="BillTitle">Choosen Cake</div>
+                    <p>Customer Infomation</p>
+                    <input className="form-control CustomerName" placeholder="Name" type="text" onChange={this.getCustomerName} />
+                    <ul className="list-group BillDetail">
                         {cakes}
-                    </tbody>
-                </table>
-                <button type="button" onClick={this.order}>Order</button>
+                    </ul>
+                    <button type="button" className="BtnOrder" onClick={this.order}>Order</button>
+                </div>
             </div>
         );
     }
