@@ -83,8 +83,8 @@ class ListCake extends Component {
                 <div className="col-md-9">
                     {listCake}
                 </div>
+                <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
                 <div className="col-md-3">
-                    <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
                     <Bill cakeIsPicked={this.state.cakeIsPicked} />
                 </div>
             </div>

@@ -42,28 +42,26 @@ class OrderModal extends Component {
                 <Modal className="OrderModal" bsSize="large" aria-labelledby="contained-modal-title-lg" show={this.props.showModal} onHide={this.close}>
 
                     <Modal.Body>
-                    <span className="close" onClick={this.close}>&times;</span>
-                        <Grid>
-                            <Row className="show-grid">
-                                <Col sm={6}>
-                                    <a><img src={this.props.choosenCake.img_path} /></a>
-                                </Col>
-                                <Col sm={6}>
-                                    <p><strong>Name:</strong> {this.props.choosenCake.name}</p>
-                                    <p><strong>Product code:</strong> {this.props.choosenCake.product_code}</p>
-                                    <p><strong>Price:</strong> {this.props.choosenCake.price}</p>
-                                    <p><strong>Qualtity:</strong> {this.props.choosenCake.qualtity}</p>
-                                    <div className="input-group input-postfix">
-                                        <input type="number" className="ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" value={this.state.qualtityPurchase} onChange={this.handleChange} />
-                                        <div className="spinner-arrows" aria-hidden="true">
-                                            <span className="up-arrow glyphicon-arrow_up"></span>
-                                            <span className="down-arrow glyphicon-arrow_down disabled"></span>
-                                        </div>
-                                    </div>
-                                    <button className="btn btn-danger" onClick={this.chooseCake}>Choose</button>
-                                </Col>
-                            </Row>
-                        </Grid>
+                    <span className="BtnCloseModal" onClick={this.close}>&times;</span>
+                        <Col sm={7} className="CakeAvatar">
+                            <img className="img-responsive" src={this.props.choosenCake.img_path} />
+                        </Col>
+                        <Col sm={5} className="CakeInfo">
+                            <p><strong>Name:</strong> {this.props.choosenCake.name}</p>
+                            <p><strong>Product code:</strong> {this.props.choosenCake.product_code}</p>
+                            <p><strong>Price:</strong> {this.props.choosenCake.price}</p>
+                            <p className="QualtityTitle"><strong>Qualtity:</strong></p>
+                            <div className="input-group input-postfix QualtityInput">
+                                <input type="number" className="ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" value={this.state.qualtityPurchase} onChange={this.handleChange} />
+                                <div className="spinner-arrows" aria-hidden="true">
+                                    <span className="up-arrow glyphicon-arrow_up"></span>
+                                    <span className="down-arrow glyphicon-arrow_down disabled"></span>
+                                </div>
+                            </div>
+                            <div className="BtnChooseSection">
+                                <button className="btn btn-danger BtnChoose" onClick={this.chooseCake}>Choose</button>
+                            </div>
+                        </Col>
                     </Modal.Body>
                 </Modal>
             </div>

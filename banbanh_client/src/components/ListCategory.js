@@ -39,13 +39,10 @@ class ListCategory extends Component {
     render() {
         const cakeCategory = this.state.categories.map((element, index) => {
             return (
-                <div key={index} className="Category col-md-3 col-sm-6 col-xs-12">
+                <div key={index} onClick={() => this.goToCakeDetail(element._id)} className="Category col-md-3 col-sm-6 col-xs-12">
                     <div className="CategoryIntro">
-                        <img ref="avatar" src={element.avatar} alt="img04" />
-                        <div className="CategoryCaption">
-                            <a onClick={() => this.goToCakeDetail(element._id)}>Take a look</a>
-                            <h3 title={element.name}>{element.name}</h3>
-                        </div>
+                        <img ref="avatar" className="img-responsive" src={element.avatar} alt="img04" />
+                        <h3 className="text-center" title={element.name}>{element.name}</h3>
                     </div>
                 </div>
             );
@@ -62,7 +59,7 @@ class ListCategory extends Component {
                   </div>
                   <div className="container">
               			<div className="section-title">
-                      		<div className="row grid cs-style-3">
+                      		<div className="row">
                                 {cakeCategory}
                       		</div>
               			</div>

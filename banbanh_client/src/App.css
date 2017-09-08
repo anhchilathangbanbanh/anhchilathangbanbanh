@@ -2,6 +2,11 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    color: #8d7e6f;
+}
+
+html, body {
+    background-color: rgb(253, 250, 232);
 }
 /*--------------------------------------
     HEADER
@@ -84,105 +89,62 @@
     height: 500px;
 }
 
-/* list category */
-.grid .CategoryIntro {
-	margin: 0;
-	position: relative;
-	margin-top:20px;
-}
-
-.grid .CategoryIntro img {
-    width: 100%;
-	display: block;
-	position: relative;
-}
-
-.grid .CategoryCaption {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 20px;
-	background: rgb(152, 207, 227);
-	color: #ed4e6e;
-}
-
-.grid .CategoryCaption h3 {
-	font-size:18px;
-	text-transform:uppercase;
-	margin: 0;
-	padding: 0;
-	color: #fff;
-    line-height: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.grid .CategoryCaption a {
-	text-align: center;
-	padding: 0px 10px;
-    line-height: 30px;
-	border-radius: 0;
-	display: inline-block;
-    float: right;
-	background: #ed4e6e;
-	color: #fff;
-    margin-left: 1em;
-}
-
-.cs-style-3 .CategoryIntro {
-	overflow: hidden;
-}
-
-.cs-style-3 .CategoryIntro img {
-	-webkit-transition: -webkit-transform 0.4s;
-	-moz-transition: -moz-transform 0.4s;
-	transition: transform 0.4s;
-}
-
-.cs-style-3 .CategoryIntro:hover img {
-	-webkit-transform: translateY(-50px);
-	-moz-transform: translateY(-50px);
-	-ms-transform: translateY(-50px);
-	transform: translateY(-50px);
-}
-
-.grid .CategoryCaption {
-	height: 80px;
-	width: 100%;
-	top: auto;
-	bottom: 0;
-	opacity: 0;
-	-webkit-transform: translateY(100%);
-	-moz-transform: translateY(100%);
-	-ms-transform: translateY(100%);
-	transform: translateY(100%);
-	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
-	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-	transition: transform 0.4s, opacity 0.1s 0.3s;
-}
-
-.grid .CategoryIntro:hover .CategoryCaption {
-	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	-ms-transform: translateY(0px);
-	transform: translateY(0px);
-	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
-	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
-	transition: transform 0.4s, opacity 0.1s;
-}
-
 /*order modal*/
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:-0px; opacity:1}
+.modal-body {
+    min-height: 350px;
+    background-color: rgb(253, 250, 232);
+    border-radius: 6px;
 }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:-0px; opacity:1}
+.modal-body .BtnCloseModal {
+    font-weight: bold;
+    font-size: 20px;
+    color: #8d7e6f;
+    cursor: pointer;
+    display: block;
+    float: right;
+}
+
+.modal-body .CakeInfo p {
+    color: #8d7e6f;
+    line-height: 45px;
+}
+
+.modal-body .CakeInfo .QualtityTitle {
+    float: left;
+}
+
+.modal-body .CakeInfo .QualtityInput {
+    float: left;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+.modal-body .CakeInfo .BtnChooseSection {
+    clear: both;
+    margin-top: 10px;
+}
+
+/* list category */
+.ListCategory .Category {
+    height: 300px;
+    position: relative;
+}
+
+.ListCategory .Category .CategoryIntro img {
+    width: 100%;
+    transform: translate(0%, -50%);
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.ListCategory .Category .CategoryIntro h3 {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 /* The Close Button */
