@@ -22,14 +22,14 @@ class ListCake extends Component {
         this.pickUpCake = this.pickUpCake.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         // get list cake
         this.getListCake();
     }
 
     getListCake() {
         $.ajax({
-            url: `/api/cake/get-cake-by-category/${this.props.match.params.category}`,
+            url: `/api/cake/get-cake-by-category/${this.props.match.params.categoryId}`,
             type: 'get'
         }).done((response) => {
             if (response.status == 1) {
@@ -76,7 +76,7 @@ class ListCake extends Component {
             <div className="ListCake">
                 <div className="bgimg-1 w3-display-container w3-opacity-min">
                 <div className="w3-display-middle">
-                    <b><span className="w3-xxxlarge w3-text-black w3-wide"></span></b>
+                    <b><span className="w3-xxxlarge w3-text-black w3-wide">{this.props.match.params.category}</span></b>
                 </div>
             </div>
             <div className="row">

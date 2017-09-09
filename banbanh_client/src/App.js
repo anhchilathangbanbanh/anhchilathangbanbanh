@@ -23,7 +23,7 @@ class App extends Component {
                 component: Home
             },
             {
-                path: '/get/cake/:category',
+                path: '/get/cake/:category/:categoryId',
                 exact: true,
                 component: ListCake
             },

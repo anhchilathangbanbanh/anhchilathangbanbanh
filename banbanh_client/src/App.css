@@ -237,8 +237,8 @@ html, body {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-    background-image: url('./images/3.jpg');
-    min-height: 600px;
+    background-image: url('./images/1.jpg');
+    min-height: 400px;
 }
 
 /* Second image (Portfolio) */

@@ -31,15 +31,14 @@ class ListCategory extends Component {
         });
     }
 
-    goToCakeDetail(category) {
-        this.props.history.push(`/get/cake/${category}`);
-        console.log(this.props);
+    goToCakeDetail(category, categoryId) {
+        this.props.history.push(`/get/cake/${category}/${categoryId}`);
     }
 
     render() {
         const cakeCategory = this.state.categories.map((element, index) => {
             return (
-                <div key={index} onClick={() => this.goToCakeDetail(element._id)} className="Category col-md-3 col-sm-6 col-xs-12">
+                <div key={index} onClick={() => this.goToCakeDetail(element.name, element._id)} className="Category col-md-3 col-sm-6 col-xs-12">
                     <div className="CategoryIntro">
                         <img ref="avatar" className="img-responsive" src={element.avatar} alt="img04" />
                         <h3 className="text-center" title={element.name}>{element.name}</h3>
