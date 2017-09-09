@@ -104,7 +104,7 @@ class AddCake extends Component {
         const categories = this.state.categories.map((element, key) => {
             return (
                 <label className="radio-inline">
-                  <input type="radio" name="category" onChange={this.handleInputChange} value={element._id} /> {element.name}
+                  <input type="radio"  checked={true} name="category" onChange={this.handleInputChange} value={element._id} /> {element.name}
                 </label>
             );
         })
