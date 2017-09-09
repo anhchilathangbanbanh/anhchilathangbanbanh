@@ -152,7 +152,7 @@ class AddCake extends Component {
                   <div className="form-group col-md-12">
                       <label>Avatar</label>
                       <input type="file" name="images"  required name="Message" onChange={this.onImageChange} />
-                      <img id="img-user" style={{"transform":"scale(0.5, 0.5)", "transform": "translate(0px, 0px)"}} height="100" width="100"/>
+                      <img id="img-user" height="20%" width="20%"/>
                   </div>
                   <div className="form-group col-md-12">
                       <label>Description</label>
