@@ -24,6 +24,15 @@ class Bill extends Component {
         }
     }
 
+    componentDidMount() {
+        $('.BillIcon img').click(() => {
+            $('.BillWrapper').toggle('slow').animate({
+                width: '250px',
+                height: '400px'
+            });
+        })
+    }
+
     getCustomerName(event) {
         this.setState({customerName: event.target.value});
     }
@@ -87,6 +96,10 @@ class Bill extends Component {
 
         return(
             <div className="Bill">
+                <div className="BillIcon">
+                    { this.state.cakes.length > 0 && <span className="NotifyIcon">{this.state.cakes.length}</span> }
+                    <img src={require('../images/bill-icon.png')} width="50px" height="50px" />
+                </div>
                 <div className="BillWrapper">
                     <div className="BillTitle">Choosen Cake</div>
                     <p>Customer Infomation</p>

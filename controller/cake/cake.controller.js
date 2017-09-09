@@ -57,7 +57,6 @@ exports.updateCakeInfo = function(req, res) {
 exports.deleteCake = function(req, res) {
     cake.deleteCake(req.body._id, req.body)
         .then(function(result) {
-            console.log(result);
             res.json({ status: 1, message: result.message });
         }, function(err) {
             res.json({ status: 0, message: err.message });

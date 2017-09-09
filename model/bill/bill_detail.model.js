@@ -92,6 +92,38 @@ exports.getTopSelling = function(startDate, endDate) {
     return deferred.promise;
 }
 
+exports.getAllCakeInBill = function() {
+    var deferred = q.defer();
+
+    bill_detail.aggregate([
+        {
+            $group: {
+                _id: '$_bill',
+                cake: { $push: '$_cake'}
+            }
+        }
+    ], function(err, result) {
+        if (err) {
+            deferred.reject(err);
+        }else {
+            var cakes = [];
+            result.forEach(function(bill) {
+                bill.cake.forEach(function(cake) {
+                    cakes.push(cake);
+                });
+            });
+
+            cake.getCakeById(cakes).then(function(data) {
+                deferred.resolve(data);
+            }, function(err) {
+                deferred.reject(err);
+            });
+        }
+    });
+
+    return deferred.promise;
+}
+
 exports.createNewBillDetail = function(orderInfo) {
     var newOrder = new bill_detail(orderInfo);
     var deferred = q.defer();
@@ -99,50 +131,20 @@ exports.createNewBillDetail = function(orderInfo) {
         if (err) {
             deferred.reject(err.message);
         }else {
-            // push this bill detail to _detail_purchase field in bill collection
-            bill.getBillById(billDetail._bill)
-                .then(function(billInfo) {
-                    if (!billInfo) {
-                        deferred.reject('This bill not existed');
-                    }else {
-                        // update order in this bill
-                        billInfo._detail_purchase.push({
-                            ordered_cake: billDetail._id,
-                            total_of_each_cake: billDetail.amount
-                        });
 
-                        // calculate total money of bill that match with this bill
-                        bill_detail.aggregate([
-                            {
-                                $match: { _bill: billInfo._id }
-                            },
-                            {
-                                $group: {
-                                    _id: '$_bill',
-                                    total: { $sum: '$amount'}
-                                }
-                            }
-                        ], function(err, result) {
-                            if (err) {
-                                deferred.reject(err);
-                            }else {
-                                billInfo.total = result[0].total;
-
-                                // then update bill info
-                                billInfo.save(function(err, data) {
-                                    if (err) {
-                                        deferred.reject(err);
-                                    }else {
-                                        console.log('Run before?');
-                                        deferred.resolve(data);
-                                    }
-                                });
-                            }
-                        });
-                    }
-                }, function(err) {
+            var billInfo._detail_purchase.push({
+                ordered_cake: billDetail._id,
+                total_of_each_cake: billDetail.amount
+            });
+            // then update bill info
+            billDetail.save(function(err, data) {
+                if (err) {
                     deferred.reject(err);
-                });
+                }else {
+                    console.log('Run before?');
+                    deferred.resolve(data);
+                }
+            });
         }
     });
     return deferred.promise;

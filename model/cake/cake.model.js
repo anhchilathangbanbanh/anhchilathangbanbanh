@@ -98,7 +98,6 @@ exports.getCakeByCategory = function(cakeCategory) {
             if (err) {
                 deferred.reject(err.message);
             }else {
-                console.log(data);
                 deferred.resolve(data);
             }
         });
@@ -136,7 +135,6 @@ exports.findCakeWithExceptionalCondition = function(queryStr, exception) {
         { img_path: queryStr }
     ];
     var exceptionalCondition = { _id: { $ne: exception } };
-    console.log(exceptionalCondition);
     cake.find({ $and: [
         { $or: queryCondition },
         exceptionalCondition

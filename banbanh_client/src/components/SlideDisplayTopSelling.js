@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Carousel, Button, Grid, Row, Col } from 'react-bootstrap';
 import $ from 'jquery';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -69,10 +68,13 @@ class SlideDisplayTopSelling extends Component {
         const slider = this.state.topCake.map((element, index) => {
             return (
                 <div key={index} className="TopSellingCake">
-                    <img className="CakeAvatar" src={element.img_path} onClick={()=> this.openModal(element)} />
+                    <img className="CakeAvatar" src={element.img_path} />
                     <div className="CakeInfo">
                         <div className="CakeName">{element.name}</div>
                         <div className="CakeDescription">{element.description}</div>
+                    </div>
+                    <div className="BtnBuyNow">
+                        <button className="btn btn-danger"  onClick={()=> this.openModal(element)}>Buy now</button>
                     </div>
                 </div>
             );
@@ -87,14 +89,12 @@ class SlideDisplayTopSelling extends Component {
         };
 
         return (
-            <div className="row SlideDisplayTopSelling">
-                <Slider {...slideSetting} className="col-md-8 TopSellingSlide">
+            <div className="SlideDisplayTopSelling">
+                <Slider {...slideSetting} className="container TopSellingSlide">
                     {slider}
                 </Slider>
                 <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
-                <div className="col-md-3">
-                    <Bill cakeIsPicked={this.state.cakeIsPicked} />
-                </div>
+                <Bill cakeIsPicked={this.state.cakeIsPicked} />
             </div>
         );
     }

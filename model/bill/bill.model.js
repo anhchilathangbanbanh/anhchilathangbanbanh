@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const q = require('q');
 
 const cake = require('../cake/cake.model');
+// const bill_detail = require('./bill_detail.model');
 
 var Schema = mongoose.Schema;
 var billSchema = new Schema({
@@ -12,13 +13,13 @@ var billSchema = new Schema({
         type: [{
             ordered_cake: {
                 type: Schema.Types.ObjectId,
-                ref: 'bill_detail'
+                ref: 'cake'
             },
-            total_of_each_cake: Number
+            qualtity_purchase: Number
         }],
-        default: []
+        required: true
     },
-    total: {
+    total_amount: {
         type: Number,
         default: 0
     },
@@ -41,10 +42,6 @@ exports.getListBill = function() {
     };
     var deferred = q.defer();
     bill.find(queryStr)
-        .populate({
-            path: '_detail_purchase',
-            select: 'amount _cake quantity_purchase'
-        })
         .exec(function(err, data) {
             if (err) {
                 deferred.reject(err.message);
@@ -54,27 +51,6 @@ exports.getListBill = function() {
         });
     return deferred.promise;
 };
-
-exports.getBillById = function(id) {
-    var queryStr = {
-        status: 1,
-        _id: id
-    };
-    var deferred = q.defer();
-    bill.findOne(queryStr)
-        .populate({
-            path: '_detail_purchase._cake',
-            select: 'name price quantity'
-        })
-        .exec(function(err, data) {
-            if (err) {
-                deferred.reject(err.message);
-            }else {
-                deferred.resolve(data);
-            }
-        });
-    return deferred.promise;
-}
 
 exports.createNewBill = function(orderInfo) {
     var newOrder = new bill(orderInfo);

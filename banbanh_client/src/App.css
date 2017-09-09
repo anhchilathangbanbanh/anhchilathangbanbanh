@@ -65,27 +65,25 @@ html, body {
     margin: 0 auto;
 }
 
-.Home .SlideDisplayTopSelling .TopSellingSlide {
-    margin-right: 15px;
-}
-
 .Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .CakeAvatar {
     display: block;
-    width: 70%;
     margin: 0 auto;
 }
 
 .Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .CakeInfo {
     text-transform: uppercase;
+    float: left;
     font-weight: bold;
     font-size: 20px;
     color: #8d7e6f;
     margin-left: 150px;
 }
 
+.Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .BtnBuyNow {
+    float: left;
+}
+
 .Home .SlideDisplayTopSelling .SlidePage .SlideContent {
-    padding-left: 122px;
-    padding-right: 122px;
     height: 500px;
 }
 
@@ -337,11 +335,7 @@ html, body {
     BILL
 ==============================================================================*/
 .Bill {
-    height: 400px;
     position: relative;
-    box-shadow: 0 0 3px #888888;
-    border-radius: 5px;
-    padding: 0px;
 }
 
 .Bill p {
@@ -349,7 +343,42 @@ html, body {
     font-size: 14px !important;
 }
 
-.Bill .BillDetail {
+.Bill .BillIcon {
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+}
+
+.Bill .BillIcon:hover {
+    cursor: pointer;
+}
+
+.Bill .BillIcon .NotifyIcon {
+    display: inline-block;
+    float: right;
+    position: fixed;
+    right: 10px;
+    background-color: #f00;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.Bill .BillWrapper {
+    display: none;
+    position: fixed;
+    right: 30px;
+    bottom: 70px;
+    width: 150px;
+    height: 300px;
+    box-shadow: 0 0 3px #888888;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.Bill .BillWrapper .BillDetail {
     height: 250px;
     background-color: #ffffff;
     overflow-y: scroll;
