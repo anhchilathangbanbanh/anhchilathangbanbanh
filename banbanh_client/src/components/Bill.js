@@ -28,10 +28,6 @@ class Bill extends Component {
         this.setState({customerName: event.target.value});
     }
 
-    handleChangeQualtity(event) {
-        this.set
-    }
-
     order() {
         let billData = {
             customer: this.state.customerName,
