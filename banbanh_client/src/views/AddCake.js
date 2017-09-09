@@ -5,14 +5,12 @@ class AddCake extends Component {
     constructor() {
         super();
         this.state = {
-            cakeInfo: {
-                product_code: '',
-                cakeName: '',
-                category: false,
-                description: '',
-                qualtity: 0,
-                price: 0
-            },
+            product_code: '',
+            cakeName: '',
+            category: false,
+            description: '',
+            qualtity: 0,
+            price: 0,
             categories: []
         };
 
@@ -60,8 +58,8 @@ class AddCake extends Component {
         }).done(response => {
             let imgPath = response.data;
             let cakeInfo = {
-                product_code: this.state.cakeInfo.product_code,
-                name: this.state.cakeInfo.cakeName,
+                product_code: this.state.product_code,
+                name: this.state.cakeName,
                 _category: this.state.category,
                 description: this.state.description,
                 qualtity: this.state.qualtity,
@@ -96,6 +94,10 @@ class AddCake extends Component {
         return (
             <form id="add_cake_form" enctype="multipart/form-data">
                 <div className="form-group">
+                    <label>Avatar</label>
+                    <input type="file" name="images" />
+                </div>
+                <div className="form-group">
                     <label>Product code</label>
                     <input type="text" className="form-control" placeholder="Product code"
                         name="product_code"
@@ -108,10 +110,6 @@ class AddCake extends Component {
                         name="cakeName"
                         value={this.state.cakeName}
                         onChange={this.handleInputChange} />
-                </div>
-                <div className="form-group">
-                    <label>Avatar</label>
-                    <input type="file" name="images" />
                 </div>
                 <div className="checkbox">
                     <label>Category</label>
