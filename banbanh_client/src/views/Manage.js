@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import Dashboard from '../components/Dashboard';
 
 class Manage extends Component {
     constructor() {
@@ -47,19 +48,28 @@ class Manage extends Component {
         });
 
         return (
-            <table className="table table-condensed">
-                <thead>
-                    <th>Product code</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Qualtity</th>
-                    <th>Price</th>
-                </thead>
-                <tbody>
-                    {listCake}
-                </tbody>
-            </table>
+          <div className="container-fluid">
+          <br/>
+          <br/>
+            <div className="col-md-2">
+                <Dashboard/>
+            </div>
+            <div className="col-md-10">
+              <table className="table table-condensed">
+                  <thead>
+                      <th>Product code</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Qualtity</th>
+                      <th>Price</th>
+                  </thead>
+                  <tbody>
+                      {listCake}
+                  </tbody>
+              </table>
+            </div>
+          </div>
         );
     }
 }
