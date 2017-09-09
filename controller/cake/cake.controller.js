@@ -7,7 +7,7 @@ exports.getListCake = function(req, res) {
     cake.getListCake()
         .then(function(result) {
             res.json({
-                stautus: 1,
+                status: 1,
                 message: 'Success',
                 data: result
             });

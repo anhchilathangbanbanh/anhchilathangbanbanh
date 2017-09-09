@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Fooder from './components/Fooder';
 import Home from './views/Home';
 import ListCake from './views/ListCake';
+import Manage from './views/Manage';
 
 class App extends Component {
     render() {
@@ -21,9 +22,14 @@ class App extends Component {
                 component: Home
             },
             {
-                path: '/:category',
+                path: '/category/:category',
                 exact: true,
                 component: ListCake
+            },
+            {
+                path: '/manage',
+                exact: true,
+                component: Manage
             }
         ]
 

@@ -32,7 +32,7 @@ class ListCategory extends Component {
     }
 
     goToCakeDetail(category) {
-        this.props.history.push(`/${category}`);
+        this.props.history.push(`/category/${category}`);
         console.log(this.props);
     }
 
