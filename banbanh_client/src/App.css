@@ -335,6 +335,7 @@ html, body {
     BILL
 ==============================================================================*/
 .Bill {
+    z-index: 1;
     position: relative;
 }
 
@@ -345,6 +346,7 @@ html, body {
 
 .Bill .BillIcon {
     position: fixed;
+    z-index: 1;
     right: 10px;
     bottom: 50px;
 }
@@ -368,6 +370,7 @@ html, body {
 
 .Bill .BillWrapper {
     display: none;
+    z-index: 1;
     position: fixed;
     right: 30px;
     bottom: 70px;

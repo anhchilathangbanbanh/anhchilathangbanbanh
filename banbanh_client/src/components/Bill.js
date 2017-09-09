@@ -25,11 +25,16 @@ class Bill extends Component {
     }
 
     componentDidMount() {
-        $('.BillIcon img').click(() => {
+        $('.BillIcon img').click((e) => {
+            e.stopPropagation();
             $('.BillWrapper').toggle('slow').animate({
                 width: '250px',
                 height: '400px'
             });
+        });
+
+        $('html').click(() => {
+          $('.BillWrapper').hide();
         })
     }
 

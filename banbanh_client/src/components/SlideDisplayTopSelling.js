@@ -68,13 +68,18 @@ class SlideDisplayTopSelling extends Component {
         const slider = this.state.topCake.map((element, index) => {
             return (
                 <div key={index} className="TopSellingCake">
-                    <img className="CakeAvatar" src={element.img_path} />
-                    <div className="CakeInfo">
-                        <div className="CakeName">{element.name}</div>
-                        <div className="CakeDescription">{element.description}</div>
+                <br/>
+                <br/>
+                    <div className="form-group col-md-6">
+                      <img className="CakeAvatar" src={element.img_path}/>
                     </div>
-                    <div className="BtnBuyNow">
-                        <button className="btn btn-danger"  onClick={()=> this.openModal(element)}>Buy now</button>
+                    <div className="form-group col-md-6">
+                      <div className="CakeInfo">
+                          <div className="CakeName">{element.name}</div>
+                      </div>
+                      <div className="BtnBuyNow">
+                          <button className="btn btn-danger"  onClick={()=> this.openModal(element)}>Buy now</button>
+                      </div>
                     </div>
                 </div>
             );

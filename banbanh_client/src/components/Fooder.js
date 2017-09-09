@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Fooder extends Component {
     render() {
         return (
-          <footer className="w3-center w3-black w3-padding-220 w3-opacity w3-hover-opacity-off">
+          <footer className="w3-center w3-black w3-padding-220 w3-hover-opacity-off">
             <div className="w3-col m6">
               <a href="#" className="w3-button w3-light-grey"><i className="fa fa-arrow-up w3-margin-right"></i>To the top</a>
               <div className="w3-xlarge w3-section">
