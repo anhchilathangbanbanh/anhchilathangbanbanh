@@ -5,18 +5,18 @@ var exports = {};
 exports.getTopSelling = function(req, res) {
     billDetail.getTopSelling()
         .then(function(result) {
-            res.json(result);
+            res.json({status: 1, message: 'Success', data: result});
         }, function(err) {
-            res.json(err);
+            res.json({status: 0, message: err});
         });
 }
 
 exports.createNewBillDetail = function(req, res) {
     billDetail.createNewBillDetail(req.body)
         .then(function(result) {
-            res.json(result);
+            res.json({status: 1, message: 'Success', data: result});
         }, function(err) {
-            res.json(err);
+            res.json({status: 0, message: err});
         });
 }
 

@@ -11,6 +11,7 @@ var billDetailSchema = mongoose.Schema({
         ref: 'bill',
         required: true
     },
+    cake_name: String,
     _cake: {
         type: Schema.Types.ObjectId,
         ref: 'cake',
@@ -37,8 +38,12 @@ billDetailSchema.pre('save', function(next) {
             if (!data) {
                 next(new Error('Don\'t have this cake'));
             }else {
+                // get name of ordered cake
+                self.cake_name = data[0].name;
+                console.log(data);
+
                 // check if amount of purchase greater then current number of this cake
-                if (self.quantity_purchase > data.quantity) {
+                if (self.qualtity_purchase > data[0].qualtity) {
                     next(new Error('Don\'t have enough cake'));
                 }else {
                     // update current number of this cake
@@ -92,37 +97,37 @@ exports.getTopSelling = function(startDate, endDate) {
     return deferred.promise;
 }
 
-exports.getAllCakeInBill = function() {
-    var deferred = q.defer();
+// exports.getAllCakeInBill = function() {
+//     var deferred = q.defer();
+//
+//     bill_detail.aggregate([
+//         {
+//             $group: {
+//                 _id: '$_bill',
+//                 cake: { $push: '$_cake'}
+//             }
+//         }
+//     ], function(err, result) {
+//         if (err) {
+//             deferred.reject(err);
+//         }else {
+//             var cakes = [];
+//             result.forEach(function(bill) {
+//                 bill.cake.forEach(function(cake) {
+//                     cakes.push(cake);
+//                 });
+//             });
+//
+//             cake.getCakeById(cakes).then(function(data) {
+//                 deferred.resolve(data);
+//             }, function(err) {
+//                 deferred.reject(err);
+//             });
+//         }
+//     });
 
-    bill_detail.aggregate([
-        {
-            $group: {
-                _id: '$_bill',
-                cake: { $push: '$_cake'}
-            }
-        }
-    ], function(err, result) {
-        if (err) {
-            deferred.reject(err);
-        }else {
-            var cakes = [];
-            result.forEach(function(bill) {
-                bill.cake.forEach(function(cake) {
-                    cakes.push(cake);
-                });
-            });
-
-            cake.getCakeById(cakes).then(function(data) {
-                deferred.resolve(data);
-            }, function(err) {
-                deferred.reject(err);
-            });
-        }
-    });
-
-    return deferred.promise;
-}
+    // return deferred.promise;
+// }
 
 exports.createNewBillDetail = function(orderInfo) {
     var newOrder = new bill_detail(orderInfo);
@@ -131,20 +136,25 @@ exports.createNewBillDetail = function(orderInfo) {
         if (err) {
             deferred.reject(err.message);
         }else {
-
-            var billInfo._detail_purchase.push({
-                ordered_cake: billDetail._id,
-                total_of_each_cake: billDetail.amount
-            });
-            // then update bill info
-            billDetail.save(function(err, data) {
-                if (err) {
+            // push this bill detail to _detail_purchase field in bill collection
+            bill.getBillById(billDetail._bill)
+                .then(function(bill) {
+                    if (!bill) {
+                        deferred.reject('Bill not existed');
+                    }else {
+                        bill._detail_purchase.push(billDetail._id);
+                        // update order in this bill
+                        bill.save(function(err, data) {
+                            if (err) {
+                                deferred.reject(err);
+                            }else {
+                                deferred.resolve(bill);
+                            }
+                        });
+                    }
+                }, function(err) {
                     deferred.reject(err);
-                }else {
-                    console.log('Run before?');
-                    deferred.resolve(data);
-                }
-            });
+                });
         }
     });
     return deferred.promise;

@@ -8,6 +8,7 @@ class AddCake extends Component {
             product_code: '',
             cakeName: '',
             category: false,
+            isShowOnSlide: false,
             description: '',
             qualtity: 0,
             price: 0,
@@ -24,19 +25,6 @@ class AddCake extends Component {
         this.getListCategories();
     }
 
-    onImageChange = (event) => {
-        if (event.target.files && event.target.files[0]) {
-          let reader = new FileReader();
-          reader.onload = (e) => {
-
-            var img = document.getElementById("img-user");
-            img.src = e.target.result;
-
-          };
-          reader.readAsDataURL(event.target.files[0]);
-        }
-      }
-
     getListCategories() {
         $.ajax({
             url: '/api/cake-category/get-list-cake-category',
@@ -52,7 +40,7 @@ class AddCake extends Component {
 
     handleInputChange(event) {
         const target = event.target;
-        const value = target.value;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
         this.setState({
@@ -60,13 +48,26 @@ class AddCake extends Component {
         });
     }
 
+    onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+          let reader = new FileReader();
+          reader.onload = (e) => {
+
+            var img = document.getElementById("img-user");
+            img.src = e.target.result;
+
+          };
+          reader.readAsDataURL(event.target.files[0]);
+        }
+    }
+
     getImgPathFromClient(event) {
       this.setState({ img_path: event.target.value });
     }
 
     addCake() {
-        console.log($("input[name=images]").val());
         var fd = new FormData(document.getElementById("add_cake_form"));
+        console.log(fd);
         $.ajax({
             url: '/api/upload',
             type: 'post',
@@ -80,94 +81,96 @@ class AddCake extends Component {
                 name: this.state.cakeName,
                 _category: this.state.category,
                 description: this.state.description,
+                show_on_slide: this.state.isShowOnSlide,
                 qualtity: this.state.qualtity,
                 price: this.state.price,
                 img_path: imgPath
             }
-            console.log(cakeInfo);
 
             $.ajax({
                 url: '/api/cake/create-new-cake',
                 type: 'post',
                 data: cakeInfo
             }).done(response => {
-                console.log(response);
+                alert('Success');
             }).fail(err => {
-                console.log(err);
+                alert('error');
             });
         }).fail(err => {
-            console.log(err);
+            alert(JSON.stringify(err));
         });
     }
 
     render() {
-        const categories = this.state.categories.map((element, key) => {
+        const categories = this.state.categories.map((element, index) => {
             return (
-                <label className="radio-inline">
-                  <input type="radio"  checked={true} name="category" onChange={this.handleInputChange} value={element._id} /> {element.name}
+                <label key={index} className="radio-inline">
+                  <input type="radio" name="category" onChange={this.handleInputChange} value={element._id} /> {element.name}
                 </label>
             );
         })
 
         return (
-          <div>
-            <br/>
-            <br/>
             <div className="container">
-              <form id="add_cake_form" enctype="multipart/form-data">
-                  <div className="form-group col-md-6">
-                      <label>Product code</label>
-                      <input type="text" className="form-control" placeholder="Product code" required name="Message"
+                <form id="add_cake_form">
+                    <div className="form-group col-md-6">
+                        <label>Product code</label>
+                        <input type="text" className="form-control" placeholder="Product code" required
                           name="product_code"
                           value={this.state.product_code}
                           onChange={this.handleInputChange} />
-                  </div>
-                  <div className="form-group col-md-6">
-                      <label>Name</label>
-                      <input type="text" className="form-control" placeholder="Name" required name="Message"
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label>Name</label>
+                        <input type="text" className="form-control" placeholder="Name" required
                           name="cakeName"
                           value={this.state.cakeName}
                           onChange={this.handleInputChange} />
-                  </div>
-                  <div className="form-group col-md-6">
-                      <label>Qualtity</label>
-                      <input type="number" className="form-control" placeholder="Qualtity" required name="Message" min="0"
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label>Qualtity</label>
+                        <input type="number" className="form-control" placeholder="Qualtity" required min="0"
                           name="qualtity"
                           value={this.state.qualtity}
                           onChange={this.handleInputChange} />
-                  </div>
-                  <div className="form-group col-md-6">
-                      <label>Price</label>
-                      <input type="number" className="form-control" placeholder="Price" required name="Message" min="0"
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label>Price</label>
+                        <input type="number" className="form-control" placeholder="Price" required min="0"
                           name="price"
                           value={this.state.price}
                           onChange={this.handleInputChange}/>
-                  </div>
-                  <div className="col-md-12">
-                    <label>Category</label>
-                    <div className="checkbox" >
-                        {categories}
                     </div>
-                  </div>
-                  <div className="form-group col-md-12">
-                      <label>Avatar</label>
-                      <input type="file" name="images"  required name="Message" onChange={this.onImageChange} />
-                      <img id="img-user" height="20%" width="20%"/>
-                  </div>
-                  <div className="form-group col-md-12">
-                      <label>Description</label>
-                      <input type="text" className="form-control" placeholder="Description"
+                    <div className="col-md-12">
+                        <label>Category</label>
+                        <div>
+                            {categories}
+                            </div>
+                        </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="isShowOnSlide"
+                                checked={this.state.isShowOnSlide}
+                                onChange={this.handleInputChange} /> Show on slide
+                        </label>
+                    </div>
+                    <div className="form-group col-md-12">
+                        <label>Avatar</label>
+                        <input type="file" name="images" required onChange={this.onImageChange} />
+                        <img id="img-user" height="20%" width="20%"/>
+                    </div>
+                    <div className="form-group col-md-12">
+                        <label>Description</label>
+                        <input type="text" className="form-control" placeholder="Description"
                           name="description"
                           value={this.state.description}
                           onChange={this.handleInputChange}/>
-                  </div>
-                  <div className="col-md-12">
-                    <button type="submit" onClick={this.addCake} className="btn btn-success">Add</button>
-                  </div>
-              </form>
+                    </div>
+                    <div className="col-md-12">
+                        <button type="button" onClick={this.addCake} className="btn btn-success">Add</button>
+                    </div>
+                </form>
             </div>
-            <br/>
-          </div>
         );
     }
 }

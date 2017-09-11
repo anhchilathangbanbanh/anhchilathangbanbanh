@@ -11,13 +11,9 @@ var billSchema = new Schema({
     },
     _detail_purchase: {
         type: [{
-            ordered_cake: {
-                type: Schema.Types.ObjectId,
-                ref: 'cake'
-            },
-            qualtity_purchase: Number
-        }],
-        required: true
+            type: Schema.Types.ObjectId,
+            ref: 'bill_detail'
+        }]
     },
     total_amount: {
         type: Number,
@@ -42,6 +38,10 @@ exports.getListBill = function() {
     };
     var deferred = q.defer();
     bill.find(queryStr)
+        .populate({
+            path: '_detail_purchase',
+            select: 'cake_name qualtity_purchase'
+        })
         .exec(function(err, data) {
             if (err) {
                 deferred.reject(err.message);
@@ -52,14 +52,35 @@ exports.getListBill = function() {
     return deferred.promise;
 };
 
+exports.getBillById = function(id) {
+    var queryStr = {
+        status: 1,
+        _id: id
+    };
+    var deferred = q.defer();
+    bill.findOne(queryStr)
+        .populate({
+            path: '_detail_purchase._cake',
+            select: 'name price quantity'
+        })
+        .exec(function(err, data) {
+            if (err) {
+                deferred.reject(err.message);
+            }else {
+                deferred.resolve(data);
+            }
+        });
+    return deferred.promise;
+}
+
 exports.createNewBill = function(orderInfo) {
     var newOrder = new bill(orderInfo);
     var deferred = q.defer();
-    newOrder.save(function(err, data) {
+    newOrder.save(function(err, bill) {
         if (err) {
             deferred.reject(err.message);
         }else {
-            deferred.resolve(data);
+            deferred.resolve(bill);
         }
     });
     return deferred.promise;

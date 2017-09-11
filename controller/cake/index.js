@@ -7,6 +7,8 @@ router.route('/get-list-cake')
     .get(controller.getListCake);
 router.route('/get-cake-by-category/:cakeCategoryId')
     .get(controller.getCakeByCategory);
+router.route('/get-cake-show-on-slide')
+    .get(controller.getCakeShowOnSlide);
 router.route('/create-new-cake')
     .post(controller.checkRequiredFields, controller.checkDuplicateFields, controller.createNewCake);
 router.route('/update-cake-info')

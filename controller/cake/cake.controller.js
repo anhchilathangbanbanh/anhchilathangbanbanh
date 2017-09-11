@@ -36,6 +36,23 @@ exports.getCakeByCategory = function(req, res) {
         });
 }
 
+exports.getCakeShowOnSlide = function(req, res) {
+    cake.getCakeShowOnSlide()
+        .then(function(result) {
+            if (result.length == 0) {
+                res.json({ status: 2, message: 'Dont have data for this option' });
+            }else if (result.length > 0) {
+                res.json({
+                    status: 1,
+                    message: 'Success',
+                    data: result
+                });
+            }
+        }, function(err) {
+            res.json({ status: 0, message: err });
+        });
+}
+
 exports.createNewCake = function(req, res) {
     cake.createNewCake(req.body)
         .then(function(result) {

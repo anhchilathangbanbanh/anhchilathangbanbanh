@@ -31,6 +31,10 @@ var cakeSchema = new Schema({
         required: true,
         unique: true
     },
+    show_on_slide: {
+        type: String,
+        default: false
+    },
     status: {
         type: Number,
         default: 1
@@ -101,6 +105,21 @@ exports.getCakeByCategory = function(cakeCategory) {
                 deferred.resolve(data);
             }
         });
+    return deferred.promise;
+}
+
+exports.getCakeShowOnSlide = function() {
+    var deferred = q.defer();
+
+    cake.find({ status: 1, show_on_slide: true })
+        .exec(function(err, data) {
+            if (err) {
+                deferred.reject(err.message);
+            }else {
+                deferred.resolve(data);
+            }
+        });
+
     return deferred.promise;
 }
 

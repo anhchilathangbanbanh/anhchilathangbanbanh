@@ -3,6 +3,8 @@ import $ from 'jquery';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import swal from 'sweetalert/dist/sweetalert.min.js';
+
 
 import OrderModal from './OrderModal';
 import Bill from './Bill';
@@ -16,33 +18,37 @@ class SlideDisplayTopSelling extends Component {
         // choosenCake: cake choosen when click "Buy now" button on slide
         // cakeIsPicked: cake was choosen in modal box, use to show in Bill component
         this.state = {
-            topCake: [],
+            cakesOnSlide: [],
+            message: '',
             showModal: false,
             choosenCake: {},
             cakeIsPicked: {}
         };
 
         // bind this pointer
-        this.getTopSelling = this.getTopSelling.bind(this);
+        this.getCakeShowOnSlide = this.getCakeShowOnSlide.bind(this);
         this.close = this.close.bind(this);
         this.pickUpCake = this.pickUpCake.bind(this);
     }
 
-    componentWillMount() {
-        this.getTopSelling();
+    componentDidMount() {
+        this.getCakeShowOnSlide();
     }
 
     // call APIs
-    getTopSelling() {
+    getCakeShowOnSlide() {
         $.ajax({
-            url: '/api/bill-detail/get-top-selling',
+            url: '/api/cake/get-cake-show-on-slide',
             type: 'get'
-        }).done((data) => {
-            this.setState({
-                topCake: data
-            });
-        }).fail((err) => {
-            alert(err.message);
+        }).done(response => {
+            console.log(response);
+            if (response.status == 1) {
+                this.setState({ cakesOnSlide: response.data });
+            }else {
+                this.setState({ message: response.message });
+            }
+        }).fail(err => {
+            swal("Oops", err, "error");
         });
     }
 
@@ -65,7 +71,7 @@ class SlideDisplayTopSelling extends Component {
     }
 
     render() {
-        const slider = this.state.topCake.map((element, index) => {
+        const slider = this.state.cakesOnSlide.map((element, index) => {
             return (
                 <div key={index} className="TopSellingCake">
                 <br/>
@@ -97,6 +103,7 @@ class SlideDisplayTopSelling extends Component {
             <div className="SlideDisplayTopSelling">
                 <Slider {...slideSetting} className="container TopSellingSlide">
                     {slider}
+                    { this.state.message && <p className="text-center">{this.state.message}</p>}
                 </Slider>
                 <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
                 <Bill cakeIsPicked={this.state.cakeIsPicked} />

@@ -374,8 +374,8 @@ html, body {
     position: fixed;
     right: 30px;
     bottom: 70px;
-    width: 150px;
-    height: 300px;
+    width: 250px;
+    max-height: 500px;
     box-shadow: 0 0 3px #888888;
     border-radius: 5px;
     padding: 0px;

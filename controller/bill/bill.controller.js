@@ -14,9 +14,9 @@ exports.getListBill = function(req, res) {
 exports.createNewBill = function(req, res) {
     bill.createNewBill(req.body)
         .then(function(result) {
-            res.send(result);
+            res.json({status: 1, message: 'Success', data: result});
         }, function(err) {
-            res.send(err);
+            res.json({status: 0, message: err});
         });
 }
 
