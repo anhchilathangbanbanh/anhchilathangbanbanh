@@ -83,6 +83,7 @@ class SlideDisplayTopSelling extends Component {
                       <div className="CakeInfo">
                           <div className="CakeName">{element.name}</div>
                       </div>
+                      <br/>
                       <div className="BtnBuyNow">
                           <button className="btn btn-danger"  onClick={()=> this.openModal(element)}>Buy now</button>
                       </div>
@@ -107,6 +108,8 @@ class SlideDisplayTopSelling extends Component {
                 </Slider>
                 <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
                 <Bill cakeIsPicked={this.state.cakeIsPicked} />
+                <br/>
+                <br/>
             </div>
         );
     }
