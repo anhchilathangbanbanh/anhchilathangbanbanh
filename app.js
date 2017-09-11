@@ -29,17 +29,17 @@ app.use(function(req, res, next) {
     next();
 });
 
-/*==================================
-    ALLOW ACCESS TO ASSETS FOLDER TO GET IMAGES VIA URL
-==================================*/
-app.use('/assets', express.static(path.join(__dirname, './assets')));
 
 /*==================================
     SET VIEW ENGINE
 ==================================*/
 app.use(express.static('./client/public'));
-app.use('/', express.static('./client/view/build'));
+app.use('/', express.static(path.join(__dirname, './client/view/build')));
 
+/*==================================
+    ALLOW ACCESS TO ASSETS FOLDER TO GET IMAGES VIA URL
+==================================*/
+app.use('/assets', express.static(path.join(__dirname, './assets')));
 
 /*===================================
     CONNECT TO DB

@@ -29,10 +29,6 @@ class Bill extends Component {
             e.stopPropagation();
             $('.BillWrapper').toggle('slow');
         });
-
-        $('html').click(() => {
-          $('.BillWrapper').hide('slow');
-        })
     }
 
     getCustomerName(event) {

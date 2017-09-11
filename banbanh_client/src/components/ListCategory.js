@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
+import swal from 'sweetalert/dist/sweetalert.min.js';
 
 class ListCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
             categories: [],
+            message: '',
             isLoading: false
         };
 
@@ -22,12 +24,15 @@ class ListCategory extends Component {
         $.ajax({
             url: '/api/cake-category/get-list-cake-category',
             type: 'get'
-        }).done((data) => {
-            this.setState({
-                categories: data.data
-            });
+        }).done(response => {
+
+            if (response.status == 1) {
+                this.setState({ categories: response.data });
+            }else {
+                this.setState({ message: response.message });
+            }
         }).fail((err) => {
-            alert(err.message);
+            swal("Oops", 'Seems like something went wrong!', "error");
         });
     }
 
@@ -60,6 +65,7 @@ class ListCategory extends Component {
               			<div className="section-title">
                       		<div className="row">
                                 {cakeCategory}
+                                { this.state.message && <p>{this.state.message}</p>}
                       		</div>
               			</div>
           	      </div>
