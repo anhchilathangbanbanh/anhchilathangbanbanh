@@ -64,9 +64,11 @@ class ListCake extends Component {
 
     render() {
         const listCake = this.state.listCake.map((element, index) => {
+            console.log(element.img_path);
+            var imgPath = `${window.location.origin}/${element.img_path}`;
             return (
                 <div key={index} className="col-md-4">
-                    <img src={element.img_path} className="img-responsive" onClick={()=> this.openModal(element)} />
+                    <img src={imgPath} className="img-responsive" onClick={()=> this.openModal(element)} />
                     <p>{element.name}</p>
                 </div>
             );
