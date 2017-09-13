@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, Grid, Row, Modal } from 'react-bootstrap';
 import update from 'react-addons-update';
 import $ from 'jquery';
+import swal from 'sweetalert/dist/sweetalert.min.js';
 
 class Bill extends Component {
     constructor() {
@@ -45,11 +46,13 @@ class Bill extends Component {
             type: 'post',
             data: billData
         }).done((bill) => {
-            if (bill) {
+            if (bill.status == 1) {
+                console.log(bill);
+                var numOfOrderSuccess = 0;
                 // insert bills detail
-                this.state.cakes.forEach(function(cake) {
+                this.state.cakes.forEach((cake, index) => {
                     let billDetailData = {
-                        _bill: bill._id,
+                        _bill: bill.data._id,
                         _cake: cake.id,
                         qualtity_purchase: cake.qualtityPurchase
                     }
@@ -57,14 +60,15 @@ class Bill extends Component {
                         url: '/api/bill-detail/create-new-bill-detail',
                         type: 'post',
                         data: billDetailData
-                    }).done((billDetail) => {
-                        alert('Success')
+                    }).done(billDetail => {
                         console.log(billDetail);
-                    }).fail((err) => {
+                        numOfOrderSuccess++;
+                        // this.removeChoosenCake(index);
+                    }).fail(err => {
                         console.log(err);
                     });
                 });
-                this.setState({ cakes: this.state.cakes.splice(0, this.state.cakes.length-1) });
+                swal('Order Success', '', 'success');
             }
         }).fail((err) => {
             console.log(err);
