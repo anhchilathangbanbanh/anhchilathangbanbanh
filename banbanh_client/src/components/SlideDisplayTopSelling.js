@@ -41,7 +41,6 @@ class SlideDisplayTopSelling extends Component {
             url: '/api/cake/get-cake-show-on-slide',
             type: 'get'
         }).done(response => {
-            console.log(response);
             if (response.status == 1) {
                 this.setState({ cakesOnSlide: response.data });
             }else {

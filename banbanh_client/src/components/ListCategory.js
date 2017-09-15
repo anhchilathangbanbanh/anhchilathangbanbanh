@@ -25,7 +25,6 @@ class ListCategory extends Component {
             url: '/api/cake-category/get-list-cake-category',
             type: 'get'
         }).done(response => {
-
             if (response.status == 1) {
                 this.setState({ categories: response.data });
             }else {
@@ -37,12 +36,12 @@ class ListCategory extends Component {
     }
 
     goToCakeDetail(category, categoryId) {
-        this.props.history.push(`/get/cake/${category}/${categoryId}`);
+        this.props.history.push(`/cake/${category}/${categoryId}`);
     }
 
     render() {
         const cakeCategory = this.state.categories.map((element, index) => {
-            var imgPath = `${window.location.origin}/${element.avatar}`;
+            var imgPath = `${window.location.origin}/${element.avatar[0]}`;
             return (
                 <div key={index} onClick={() => this.goToCakeDetail(element.name, element._id)} className="Category col-md-3 col-sm-6 col-xs-12">
                     <div className="CategoryIntro">

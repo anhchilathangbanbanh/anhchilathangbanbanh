@@ -17,7 +17,7 @@ exports.uploadImg = function(req, res) {
                     // filename = originalFilename + timestamps + extention
                     var filename = image.originalFilename.slice(0, image.originalFilename.indexOf('.')) + '_' + Date.now() +
                                     image.originalFilename.slice(image.originalFilename.indexOf('.'), image.originalFilename.length);
-                    var path = '/assets/' + filename;
+                    var path = './assets/' + filename;
                     fs.writeFile(path, data, function(err) {
                         if (err) {
                             res.send({ status: 0, message: err });

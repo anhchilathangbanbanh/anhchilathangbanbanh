@@ -8,10 +8,10 @@ cake_categorySchema = new Schema({
         required: true,
         unique: true
     },
-    avatar: {
+    avatar: [{
         type: String,
         required: true
-    },
+    }],
     status: {
         type: Number,
         default: 1

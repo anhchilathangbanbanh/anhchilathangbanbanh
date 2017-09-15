@@ -3,6 +3,7 @@ import $ from 'jquery';
 
 import OrderModal from '../components/OrderModal';
 import Bill from '../components/Bill';
+import SideMenu from '../components/SideMenu';
 
 class ListCake extends Component {
     constructor() {
@@ -64,10 +65,9 @@ class ListCake extends Component {
 
     render() {
         const listCake = this.state.listCake.map((element, index) => {
-            console.log(element.img_path);
             var imgPath = `${window.location.origin}/${element.img_path}`;
             return (
-                <div key={index} className="col-md-4">
+                <div key={index} className="Cake col-md-4">
                     <img src={imgPath} className="img-responsive" onClick={()=> this.openModal(element)} />
                     <p>{element.name}</p>
                 </div>
@@ -80,16 +80,21 @@ class ListCake extends Component {
                 <div className="w3-display-middle">
                     <b><span className="w3-xxxlarge w3-text-black w3-wide">{this.props.match.params.category}</span></b>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col-md-9">
-                    {listCake}
                 </div>
-                <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
-                <div className="col-md-3">
-                    <Bill cakeIsPicked={this.state.cakeIsPicked} />
+                <div className="ListCakeContent row">
+                    <div className="col-md-2">
+                        <div className="CategorySideMenu">
+                            <SideMenu />
+                        </div>
+                    </div>
+                    <div className="col-md-8">
+                        {listCake}
+                    </div>
+                    <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>
+                    <div className="col-md-3">
+                        <Bill cakeIsPicked={this.state.cakeIsPicked} />
+                    </div>
                 </div>
-            </div>
           </div>
         );
     }

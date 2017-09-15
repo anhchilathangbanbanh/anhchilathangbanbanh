@@ -28,7 +28,11 @@ class Bill extends Component {
     componentDidMount() {
         $('.BillIcon img').click((e) => {
             e.stopPropagation();
-            $('.BillWrapper').toggle('slow');
+            $('.BillWrapper').show('slow');
+        });
+
+        $('.BtnCloseBill').click(() => {
+            $('.BillWrapper').hide('slow');
         });
     }
 
@@ -100,10 +104,13 @@ class Bill extends Component {
             <div className="Bill">
                 <div className="BillIcon">
                     { this.state.cakes.length > 0 && <span className="NotifyIcon">{this.state.cakes.length}</span> }
-                    <img src={require('../images/bill-icon.png')} width="50px" height="50px" />
+                    <img src={require('../images/bill-icon-square.jpg')} width="50px" height="50px" />
                 </div>
                 <div className="BillWrapper">
-                    <div className="BillTitle">Choosen Cake</div>
+                    <div className="BillTitle">
+                        <span>Choosen Cake</span>
+                        <span className="BtnCloseBill">x</span>
+                    </div>
                     <p>Customer Infomation</p>
                     <input className="form-control CustomerName" placeholder="Name" type="text" onChange={this.getCustomerName} />
                     <ul className="list-group BillDetail">
