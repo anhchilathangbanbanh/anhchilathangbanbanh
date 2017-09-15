@@ -6,8 +6,23 @@ const cake = require('../cake/cake.model');
 
 var Schema = mongoose.Schema;
 var billSchema = new Schema({
-    customer: {
-        type: String
+    customer_name: {
+        type: String,
+        required: [true, 'Name is required!']
+    },
+    customer_phone: {
+        type: String,
+        validate: {
+            validator: function(v) {
+                return /^[0-9]+$/.test(v);
+            },
+            message: '{VALUE} is not a valid phone number!'
+        },
+
+    },
+    customer_address: {
+        type: String,
+        required: [true, 'Address is required!']
     },
     _detail_purchase: {
         type: [{

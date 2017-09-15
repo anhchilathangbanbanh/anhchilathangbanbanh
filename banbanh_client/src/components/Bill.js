@@ -9,10 +9,12 @@ class Bill extends Component {
         super();
         this.state = {
             cakes: [],
-            customerName: ""
+            name: '',
+            phoneNumber: '',
+            address: ''
         }
 
-        this.getCustomerName = this.getCustomerName.bind(this);
+        this.getCustomerInfo = this.getCustomerInfo.bind(this);
         this.order = this.order.bind(this);
         this.removeChoosenCake = this.removeChoosenCake.bind(this);
     }
@@ -36,22 +38,30 @@ class Bill extends Component {
         });
     }
 
-    getCustomerName(event) {
-        this.setState({customerName: event.target.value});
+    getCustomerInfo(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
     order() {
         let billData = {
-            customer: this.state.customerName,
+            customer_name: this.state.name,
+            customer_phone: this.state.phoneNumber,
+            customer_address: this.state.address,
             _detail_purchase: []
         };
+        console.log(billData);
         $.ajax({
             url: '/api/bill/create-new-bill',
             type: 'post',
             data: billData
         }).done((bill) => {
             if (bill.status == 1) {
-                console.log(bill);
                 var numOfOrderSuccess = 0;
                 // insert bills detail
                 this.state.cakes.forEach((cake, index) => {
@@ -69,13 +79,15 @@ class Bill extends Component {
                         numOfOrderSuccess++;
                         // this.removeChoosenCake(index);
                     }).fail(err => {
-                        console.log(err);
+                        swal('Error', err.message, 'error');
                     });
                 });
                 swal('Order Success', '', 'success');
+            }else if (bill.status == 0) {
+                swal('Error', bill.message, 'error');
             }
         }).fail((err) => {
-            console.log(err);
+            swal('Error', err.message, 'error');
         });
     }
 
@@ -104,15 +116,20 @@ class Bill extends Component {
             <div className="Bill">
                 <div className="BillIcon">
                     { this.state.cakes.length > 0 && <span className="NotifyIcon">{this.state.cakes.length}</span> }
-                    <img src={require('../images/bill-icon-square.jpg')} width="50px" height="50px" />
+                    <img src={require('../images/bill-icon.png')} width="50px" height="50px" />
                 </div>
                 <div className="BillWrapper">
                     <div className="BillTitle">
                         <span>Choosen Cake</span>
-                        <span className="BtnCloseBill">x</span>
+                        <span className="BtnCloseBill">&times;</span>
                     </div>
                     <p>Customer Infomation</p>
-                    <input className="form-control CustomerName" placeholder="Name" type="text" onChange={this.getCustomerName} />
+                    <input className="form-control CustomerName" placeholder="Name" type="text"
+                        name="name" value={this.state.name} onChange={this.getCustomerInfo} />
+                    <input className="form-control CustomerName" placeholder="Phone number" type="text"
+                        name="phoneNumber" value={this.state.phoneNumber} onChange={this.getCustomerInfo} />
+                    <input className="form-control CustomerName" placeholder="Address" type="text"
+                        name="address" value={this.state.address} onChange={this.getCustomerInfo} />
                     <ul className="list-group BillDetail">
                         {cakes}
                     </ul>

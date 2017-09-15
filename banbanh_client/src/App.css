@@ -361,7 +361,7 @@ html, body {
     z-index: 1;
     right: 10px;
     bottom: 50px;
-    background-color: rgb(253, 250, 232);
+    /*background-color: rgb(253, 250, 232);*/
 }
 
 .Bill .BillIcon:hover {
@@ -421,6 +421,7 @@ html, body {
 .Bill .BillWrapper .BillTitle .BtnCloseBill {
     float: right;
     cursor: pointer;
+    font-weight: lighter;
 }
 
 .Bill .BillDetail .BillDetailItem {
@@ -521,7 +522,7 @@ html, body {
     width: 100px;
     transition: width 0s;
     transition-timing-function: linear;
-    background-color: #eaa73d;
+    /*background-color: #eaa73d;*/
     z-index: 1;
 }
 
@@ -531,7 +532,7 @@ html, body {
 }
 
 .SideMenu .ListCategoryMenu {
-    background-color: #eaa73d;
+    /*background-color: #eaa73d;*/
     box-shadow: 0 -1px 12px rgba(0,0,0,0.4);
     list-style: none;
 }
@@ -586,7 +587,7 @@ html, body {
     margin-left: 20px;
     font-size: 20px;
     font-weight: bold;
-    color: #ffffff;
+    color: #8d7e6f;
 }
 
 .SideMenu:hover .ListCategoryMenu li .PathToCategory .CategoryName {
@@ -594,9 +595,10 @@ html, body {
 }
 
 .CategorySideMenu {
-    position: absolute;
+    /*position: absolute;*/
     left: 50px;
     width: 100px;
+    margin: 50px auto;
 }
 
 .ActiveCategory {
