@@ -76,13 +76,13 @@ class SlideDisplayTopSelling extends Component {
                 <br/>
                 <br/>
                     <div className="form-group col-md-6">
-                      <img className="CakeAvatar" src={element.img_path}/>
+                      <img className="CakeAvatar img-responsive" src={element.img_path}/>
                     </div>
                     <div className="form-group col-md-6">
                       <div className="CakeInfo">
                           <div className="CakeName">{element.name}</div>
+                          <div className="CakeDescription">{element.description}</div>
                       </div>
-                      <br/>
                       <div className="BtnBuyNow">
                           <button className="btn btn-danger"  onClick={()=> this.openModal(element)}>Buy now</button>
                       </div>
@@ -94,9 +94,10 @@ class SlideDisplayTopSelling extends Component {
         const slideSetting = {
             dots: true,
             infinite: true,
-            speed: 500,
+            autoplay: true,
+            autoplaySpeed: 300,
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
         };
 
         return (

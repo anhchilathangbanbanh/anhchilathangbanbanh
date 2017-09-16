@@ -72,16 +72,66 @@ html, body {
 }
 
 .Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .CakeInfo {
+    margin-top: 50px;
+}
+
+.Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .CakeInfo .CakeName {
     text-transform: uppercase;
-    float: left;
     font-weight: bold;
     font-size: 20px;
+    margin-top: 10px;
     color: #8d7e6f;
-    margin-left: 150px;
+}
+
+.Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .CakeInfo .CakeDescription {
+    color: #8d7e6f;
+    font-size: 15px;
+    margin-top: 10px;
 }
 
 .Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .BtnBuyNow {
-    float: left;
+    clear: both;
+    margin-top: 10px;
+    width: 81px;
+    border-radius: 5px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6);
+  }
+  50% {
+      box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.4);
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+.Home .SlideDisplayTopSelling .TopSellingSlide .TopSellingCake .BtnBuyNow:hover, .BillIconShake {
+    animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .Home .SlideDisplayTopSelling .SlidePage .SlideContent {
@@ -372,7 +422,7 @@ html, body {
     display: inline-block;
     float: right;
     position: fixed;
-    right: 10px;
+    right: 0px;
     background-color: #f00;
     text-align: center;
     color: #ffffff;
@@ -548,7 +598,6 @@ html, body {
     cursor: pointer;
     opacity: 1;
 }
-
 /* hover effect: background linear top to bottom */
 .SideMenu .ListCategoryMenu li .PathToCategory {
     position: relative;
@@ -599,6 +648,7 @@ html, body {
     left: 50px;
     width: 100px;
     margin: 50px auto;
+    display: block;
 }
 
 .ActiveCategory {

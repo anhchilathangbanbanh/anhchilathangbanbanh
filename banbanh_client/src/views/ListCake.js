@@ -67,7 +67,7 @@ class ListCake extends Component {
         const listCake = this.state.listCake.map((element, index) => {
             var imgPath = `${window.location.origin}/${element.img_path}`;
             return (
-                <div key={index} className="Cake col-md-4">
+                <div key={index} className="Cake col-md-3 col-sm-4">
                     <img src={imgPath} className="img-responsive" onClick={()=> this.openModal(element)} />
                     <p>{element.name}</p>
                 </div>
@@ -82,12 +82,12 @@ class ListCake extends Component {
                 </div>
                 </div>
                 <div className="ListCakeContent row">
-                    <div className="col-md-2">
+                    <div className="col-md-2 col-sm-2 col-xs-2">
                         <div className="CategorySideMenu">
                             <SideMenu />
                         </div>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-9">
                         {listCake}
                     </div>
                     <OrderModal showModal={this.state.showModal} onCloseModal={this.close} choosenCake={this.state.choosenCake} pickUpCake={this.pickUpCake}/>

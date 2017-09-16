@@ -24,6 +24,7 @@ class Bill extends Component {
             this.setState({
                 cakes: this.state.cakes.concat(nextProps.cakeIsPicked)
             });
+            $('.BillIcon').addClass('BillIconShake');
         }
     }
 
