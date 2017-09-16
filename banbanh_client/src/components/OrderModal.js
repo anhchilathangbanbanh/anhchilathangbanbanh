@@ -47,9 +47,9 @@ class OrderModal extends Component {
                             <img className="img-responsive" src={this.props.choosenCake.img_path} />
                         </Col>
                         <Col sm={5} className="CakeInfo">
-                            <p><strong>Name:</strong> {this.props.choosenCake.name}</p>
-                            <p><strong>Product code:</strong> {this.props.choosenCake.product_code}</p>
-                            <p><strong>Price:</strong> {this.props.choosenCake.price}</p>
+                            <p className="CakeName"><strong>Name:</strong> {this.props.choosenCake.name}</p>
+                            <p><strong>Description:</strong>{this.props.choosenCake.description}</p>
+                            <p><strong>Price:</strong> {this.props.choosenCake.price}$</p>
                             <p className="QualtityTitle"><strong>Qualtity:</strong></p>
                             <div className="input-group input-postfix QualtityInput">
                                 <input type="number" className="ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" value={this.state.qualtityPurchase} onChange={this.handleChange} />

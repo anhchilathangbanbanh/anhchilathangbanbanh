@@ -92,7 +92,11 @@ class AddCake extends Component {
                 type: 'post',
                 data: cakeInfo
             }).done(response => {
-                alert('Success');
+                if (response.status == 1) {
+                    alert('Success');
+                }else if (response.status == 0) {
+                    alert(response.message);
+                }
             }).fail(err => {
                 alert('error');
             });

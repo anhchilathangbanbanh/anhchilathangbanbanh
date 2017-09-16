@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import swal from 'sweetalert/dist/sweetalert.min.js';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 // import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ListCake from '../views/ListCake';
@@ -36,17 +36,15 @@ class SideMenu extends Component {
         });
     }
 
-    goToCategory(href) {
-        window.location = href;
+    goToCategory(category, categoryId) {
+        this.props.history.push(`/cake/${category}/${categoryId}`);
     }
 
     render() {
         const categories = this.state.categories.map((element, index) => {
-            let categoryPath = `#/cake/${element.name}/${element._id}`
-
             return (
                 <li key={index}>
-                    <div className="PathToCategory" onClick={() => this.goToCategory(categoryPath)}>
+                    <div className="PathToCategory" onClick={() => this.goToCategory(element.name, element._id)}>
                         <img width="60" height="60" src={element.avatar[1]} />
                         <div className="CategoryName">{element.name}</div>
                     </div>
@@ -64,4 +62,4 @@ class SideMenu extends Component {
     }
 }
 
-export default SideMenu;
+export default withRouter(SideMenu);

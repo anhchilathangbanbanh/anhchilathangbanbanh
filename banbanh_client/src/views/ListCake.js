@@ -13,7 +13,8 @@ class ListCake extends Component {
             message: '',
             showModal: false,
             choosenCake: {},
-            cakeIsPicked: {}
+            cakeIsPicked: {},
+            prevUrl: ''
         };
 
         // bind this
@@ -23,8 +24,16 @@ class ListCake extends Component {
         this.pickUpCake = this.pickUpCake.bind(this);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location.pathname != this.props.location.pathname) {
+            // get list cake
+            this.getListCake();
+        }
+        console.log(prevProps);
+        console.log(this.props);
+    }
+
     componentDidMount() {
-        // get list cake
         this.getListCake();
     }
 

@@ -559,6 +559,9 @@ html, body {
 .ListCake .Cake p {
     width: 100%;
     text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .ListCakeContent {
