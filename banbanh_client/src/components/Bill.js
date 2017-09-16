@@ -53,38 +53,17 @@ class Bill extends Component {
             customer_name: this.state.name,
             customer_phone: this.state.phoneNumber,
             customer_address: this.state.address,
-            _detail_purchase: []
+            billDetail: this.state.cakes
         };
-        console.log(billData);
         $.ajax({
             url: '/api/bill/create-new-bill',
             type: 'post',
             data: billData
-        }).done((bill) => {
-            if (bill.status == 1) {
-                var numOfOrderSuccess = 0;
-                // insert bills detail
-                this.state.cakes.forEach((cake, index) => {
-                    let billDetailData = {
-                        _bill: bill.data._id,
-                        _cake: cake.id,
-                        qualtity_purchase: cake.qualtityPurchase
-                    }
-                    $.ajax({
-                        url: '/api/bill-detail/create-new-bill-detail',
-                        type: 'post',
-                        data: billDetailData
-                    }).done(billDetail => {
-                        console.log(billDetail);
-                        numOfOrderSuccess++;
-                        // this.removeChoosenCake(index);
-                    }).fail(err => {
-                        swal('Error', err.message, 'error');
-                    });
-                });
+        }).done((response) => {
+            if (response.status == 1) {
                 swal('Order Success', '', 'success');
-            }else if (bill.status == 0) {
-                swal('Error', bill.message, 'error');
+            }else if (response.status == 0) {
+                swal('Error', response.message, 'error');
             }
         }).fail((err) => {
             swal('Error', err.message, 'error');

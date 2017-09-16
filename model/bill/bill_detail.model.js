@@ -40,7 +40,6 @@ billDetailSchema.pre('save', function(next) {
             }else {
                 // get name of ordered cake
                 self.cake_name = data[0].name;
-                console.log(data);
 
                 // check if amount of purchase greater then current number of this cake
                 if (self.qualtity_purchase > data[0].qualtity) {
@@ -143,12 +142,14 @@ exports.createNewBillDetail = function(orderInfo) {
                         deferred.reject('Bill not existed');
                     }else {
                         bill._detail_purchase.push(billDetail._id);
+                        bill.total_amount += billDetail.amount;
                         // update order in this bill
                         bill.save(function(err, data) {
                             if (err) {
                                 deferred.reject(err);
                             }else {
-                                deferred.resolve(bill);
+                                console.log(data);
+                                deferred.resolve(data);
                             }
                         });
                     }
