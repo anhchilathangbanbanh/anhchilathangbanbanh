@@ -31,7 +31,7 @@ class SlideDisplayTopSelling extends Component {
         this.pickUpCake = this.pickUpCake.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getCakeShowOnSlide();
     }
 
