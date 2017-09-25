@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 =====================================*/
 app.use(function(req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'localhost:8000');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -69,6 +69,7 @@ app.use('/api/cake', require('./controller/cake/index'));
 app.use('/api/upload', require('./controller/upload/index'));
 app.use('/api/bill', require('./controller/bill/index'));
 app.use('/api/bill-detail', require('./controller/bill-detail/index'));
+app.use('/api/user', require('./controller/user/index'));
 
 /*===================================
     SET PORT

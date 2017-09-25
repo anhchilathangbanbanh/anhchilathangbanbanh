@@ -25,7 +25,6 @@ class Header extends Component {
                                 <div className="navbar-collapse collapse" id="menu-collapse">
                                     <ul className="nav navbar-nav MenuDetail">
                                         <li><Link className="navbar-brand" to="/">Home</Link></li>
-                                        <li><a>Popular</a></li>
                                         <li><a>Contact us</a></li>
                                     </ul>
                                 </div>
