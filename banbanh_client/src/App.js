@@ -42,7 +42,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Header />
+                    <Header/>
                     <Switch>
                         {routes.map((route, index) => (
                             <Route key={index} {...route} />
