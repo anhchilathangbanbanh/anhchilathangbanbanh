@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './header.css';
 import './style.css';
-
 import Header from './components/Header';
 import Fooder from './components/Fooder';
 import Home from './views/Home';
