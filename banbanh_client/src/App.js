@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './header.css';
 import './style.css';
+
 import Header from './components/Header';
 import Fooder from './components/Fooder';
 import Home from './views/Home';
@@ -41,7 +42,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Header/>
+                    <Header />
                     <Switch>
                         {routes.map((route, index) => (
                             <Route key={index} {...route} />
